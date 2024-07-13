@@ -1,0 +1,297 @@
+#container.wide-open {
+  position: fixed;
+  width: 86vw;
+  height: 86vh;
+  min-width: 86vw;
+  max-width: 86vw;
+  min-height: 86vh;
+  max-height: 86vh;
+  top: calc(7vh - 20px);
+  left: calc(7vw - 20px);
+  z-index: 3;
+  background-color: #24201d;
+  border-radius: 4px;
+  padding: 10px;
+  padding-top: 2px;
+}
+
+#container.wide-open > #top-elements-container {
+  margin-bottom: 10px;
+}
+
+#container.wide-open > #table-container {
+  height: calc(86vh - 75px);
+  max-height: calc(100vh - 75px);
+}
+
+.background {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+#container {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin-top: 5px;
+}
+
+#top-elements-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+#table-actions {
+  vertical-align: bottom;
+  margin-bottom: 1px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+#table-actions > button {
+  font-size: x-small;
+  padding: 6px 10px;
+  height: min-content;
+  border-radius: 10px;
+}
+
+#table-actions > img {
+  height: 1.5em;
+  width: 1.5em;
+  background-color: #322f29;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+
+.name {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+#table-container {
+  height: calc(100% - 56px);
+  max-height: calc(100% - 56px);
+  background-color: #15110e;
+  border-radius: 4px;
+  padding: 15px;
+  width: calc(100% - 30px);
+  max-width: calc(100% - 30px);
+  min-width: calc(100% - 30px);
+  position: relative;
+}
+
+#table-content-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  max-height: 100%;
+  /*border-top: 0.5px solid #dbd1d15d;*/
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: auto;
+  position: relative;
+  border: 0.5px solid #dbd1d15d;
+  border-left: 0.5px solid #dbd1d15d;
+  border-right: 0.5px solid #dbd1d15d;
+}
+
+th, td {
+  max-width: 100%;
+  padding: 7px;
+  font-size: small;
+}
+
+tr {
+  position: relative;  /* Necessary for absolute positioning of pseudo-element */
+}
+
+tr::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;  /* Aligns the pseudo-element at the bottom of the <tr> */
+  height: 0.5px;  /* Thickness of your gradient "border" */
+  background: linear-gradient(to right, #dbd1d144, #dbd1d193, #dbd1d144);  /* Gradient from red to blue */
+}
+
+tr > th {
+  padding: 2px 10px;
+  text-align: left;
+  background-color: #24201d;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+#table-content-container {
+  border-top: 0.5px solid #dbd1d15d;
+}
+
+tr > th::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.5px;
+  background-color: #dbd1d15d; /* Border color */
+}
+
+.header-content, .option {
+  display: flex;
+  align-items: center;
+}
+
+.header-content div {
+  margin-right: 5px;
+}
+
+.option img {
+  height: 1.5em;
+}
+
+.header-content img {
+  height: 2.5em;
+}
+
+.option div {
+  margin-left: 12px;
+}
+
+.filter label {
+  margin-right: 8px;
+}
+
+.filter {
+  margin: 10px;
+}
+
+.popup-content {
+  font-size: small;
+  border: 1px solid #dbd1d1a1;
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: #1a1512 1.5px 1.5px 1px 1px;
+  background-color: #322a23;
+}
+
+.option {
+  padding: 5px;
+  margin: 5px;
+  margin-right: 10px;
+  background-color: #51463d;
+}
+
+.filter-sort-popup {
+  position: fixed;
+  z-index: 3;
+}
+
+.selected {
+  background-color: #6e6052;
+}
+
+.slider-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.checkbox-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  gap: 7px; /* Increase the gap between checkbox and label text */
+}
+
+.custom-checkbox {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #6e6052;
+  border: 0.5px solid #dbd1d174;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.custom-checkbox:checked {
+  background-color: #3a3128; /* Change the selection color */
+  border: 0.5px solid #dbd1d174;
+}
+
+.custom-checkbox:checked::before {
+  content: '\2714'; /* Unicode character for check mark */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #DBD1D1; /* Color of the check mark */
+}
+
+.textfield {
+  text-align: left;
+  font-size: 15px;
+  background-color: #3d352e;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.dropdown-filter > label {
+  margin-right: 10px;
+}
+
+#leer-fehlermeldung {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
