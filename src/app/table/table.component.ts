@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Inject, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RangeSliderComponent } from '../range-slider/range-slider.component';
 import { tableConfig } from './table-config.const';
 import { CustomDropdownComponent } from '../custom-dropdown/custom-dropdown.component';
+import { FilterType } from './filter-type.enum';
 
 @Component({
   selector: 'app-table',

@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Gully';
+  src: url('assets/fonts/gully/Gully-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Glacial Indifference Bold';
+  src: url('assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
+}
+
+* {
+  font-family: 'Gully', Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  font-family: 'Glacial Indifference Bold', Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: 55px;
+  letter-spacing: 5px;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
