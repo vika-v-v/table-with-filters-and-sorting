@@ -7,7 +7,7 @@
 
   <!-- Name und action-Butons anzeigen -->
   <div id="top-elements-container">
-    <p *ngIf="name != ''" class="name grey-text">{{ name }}</p>
+    <p *ngIf="name != ''" class="name" [ngStyle]="{color: themeColors[theme].text}">{{ name }}</p>
     <div id="table-actions">
       <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()" class="global-button grey-text">Änderungen löschen</button>
       <img *ngIf="!wideOpen" (click)="wideOpen = true;" src="assets/icons/arrows_out_thin_icon.svg" />

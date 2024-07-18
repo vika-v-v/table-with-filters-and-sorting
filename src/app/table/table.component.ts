@@ -5,6 +5,7 @@ import { RangeSliderComponent } from '../range-slider/range-slider.component';
 import { tableConfig } from './table-config.const';
 import { CustomDropdownComponent } from '../custom-dropdown/custom-dropdown.component';
 import { FilterType } from './filter-type.enum';
+import { themeColors } from './theme-colors';
 
 @Component({
   selector: 'app-table',
@@ -26,6 +27,7 @@ export class TableComponent {
   @Input() tableData: any[] = [];
   @Input() name: string = '';
   @Input() leerFehlermeldung: string = 'Noch nicht vorhanden.';
+  @Input() theme: "light" | "dark" = "light";
 
   // Formatierte Eingabedaten, die u. a. angeben, ob eine Zeile angezeigt werden soll
   tableDataFormatted: any[] = [];
@@ -48,6 +50,8 @@ export class TableComponent {
   // Elemente, auf die aus der HTML-Schicht zugegriffen werden muss
   @ViewChild('popup') popupRef!: ElementRef;
   @ViewChild('table') table!: ElementRef;
+
+  themeColors = themeColors;
 
   private possibleFiltersAndSortings = tableConfig;
 
