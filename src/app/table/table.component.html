@@ -10,8 +10,8 @@
     <p *ngIf="name != ''" class="name grey-text">{{ name }}</p>
     <div id="table-actions">
       <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()" class="global-button grey-text">Änderungen löschen</button>
-      <img *ngIf="!wideOpen" (click)="wideOpen = true;" src="../../../assets/icons/phosphor-thin/arrows_out_thin_icon.svg" />
-      <img *ngIf="wideOpen" (click)="wideOpen = false;" src="../../../assets/icons/phosphor-thin/arrows_in_thin_icon.svg" />
+      <img *ngIf="!wideOpen" (click)="wideOpen = true;" src="src/assets/icons/arrows_out_thin_icon.svg" />
+      <img *ngIf="wideOpen" (click)="wideOpen = false;" src="src/assets/icons/arrows_in_thin_icon.svg" />
     </div>
   </div>
 
