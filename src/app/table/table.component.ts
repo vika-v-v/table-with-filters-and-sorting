@@ -296,10 +296,10 @@ export class TableComponent {
 
   // image je nach dem ob Filter und/oder Sortierung angezeigt ist anpassen
   getArrowSrc(header: any) {
-    const arrow = "../../../assets/icons/andere/box_arrow_down.svg";
-    const arrowWithPoint = "../../../assets/icons/andere/box_arrow_down_with_point.svg";
-    const arrowWithSort = "../../../assets/icons/andere/box_arrow_down_with_sort.svg";
-    const arrowWithPointAndSort = "../../../assets/icons/andere/box_arrow_down_with_point_and_sort.svg";
+    const arrow = "assets/icons/box_arrow_down.svg";
+    const arrowWithPoint = "assets/icons/box_arrow_down_with_point.svg";
+    const arrowWithSort = "assets/icons/box_arrow_down_with_sort.svg";
+    const arrowWithPointAndSort = "assets/icons/box_arrow_down_with_point_and_sort.svg";
 
     let filterUsed = false;
     let sortingUsed = false;

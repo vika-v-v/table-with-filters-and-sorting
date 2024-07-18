@@ -1,7 +1,7 @@
 import { FilterType } from "./filter-type.enum";
 
-let arrowUp = 'src/assets/icons/arrow_up_thin_icon.svg';
-let arrowDown = 'src/assets/icons/arrow_down_thin_icon.svg';
+let arrowUp = 'assets/icons/arrow_up_thin_icon.svg';
+let arrowDown = 'assets/icons/arrow_down_thin_icon.svg';
 
 export const tableConfig = [
   {
