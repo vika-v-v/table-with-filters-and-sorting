@@ -79,10 +79,9 @@
   border-radius: 10px;
 }
 
-#table-actions > img {
+#table-actions > .img, svg {
   height: 1.5em;
   width: 1.5em;
-  background-color: #322f29;
   border-radius: 4px;
   padding: 2px;
 }

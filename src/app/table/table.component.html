@@ -10,8 +10,23 @@
     <p *ngIf="name != ''" class="name" [ngStyle]="{color: themeColors[theme].text}">{{ name }}</p>
     <div id="table-actions">
       <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()" class="global-button grey-text">Änderungen löschen</button>
-      <img *ngIf="!wideOpen" (click)="wideOpen = true;" src="assets/icons/arrows_out_thin_icon.svg" />
-      <img *ngIf="wideOpen" (click)="wideOpen = false;" src="assets/icons/arrows_in_thin_icon.svg" />
+
+      <div *ngIf="!wideOpen" (click)="wideOpen = true;" [ngStyle]="{background: themeColors[theme].background}">
+        <svg class="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path [attr.stroke]="themeColors[theme].text" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                d="M16 4h4v4M14 10l6-6M8 20H4v-4M10 14l-6 6M20 16v4h-4M14 14l6 6M4 8V4h4M10 10L4 4"></path>
+        </svg>
+      </div>
+
+      <div *ngIf="wideOpen" (click)="wideOpen = false;" [ngStyle]="{background: themeColors[theme].background}">
+        <svg class="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v240z"></path>
+          <path [attr.stroke]="themeColors[theme].text" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+            d="M192 104h-40V64M208 48l-56 56M64 152h40v40M48 208l56-56M152 192v-40h40M208 208l-56-56M104 64v40H64M48 48l56 56"></path>
+        </svg>
+      </div>
+
     </div>
   </div>
 
