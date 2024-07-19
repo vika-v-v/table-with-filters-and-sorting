@@ -31,7 +31,7 @@
   </div>
 
   <!-- Tabelle dynamisch generieren -->
-  <div id="table-container">
+  <div id="table-container" [ngStyle]="{background: themeColors[theme].background}">
     <div *ngIf="tableDataFormatted.length > 0" id="table-content-container">
       <table #table>
 
