@@ -66,6 +66,6 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: calc(75vh - 120px);
+  height: calc(75vh - 90px);
   margin-top: calc(25vh + 10px);
 }

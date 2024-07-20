@@ -57,6 +57,7 @@ export class DemoComponent {
 
   citiesTableData = [
     ["Berlin", 3500000, "Germany", "2021-01-01", "Capital"],
+    ["Berlin", 3500000, "Germany", "2021-01-01", "Capital"],
     ["Paris", 2000000, "France", "2021-02-01", "City of Love"]
   ];
 }
