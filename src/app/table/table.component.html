@@ -41,7 +41,27 @@
             <th *ngFor="let data of tableHeaderFormatted" [ngStyle]="{background: themeColors[theme]['table-header']}" class="outline-top-bottom">
               <div class="header-content">
                 <div [ngStyle]="{color: themeColors[theme].text}">{{ data.wert }}</div>
-                <img #icon (click)="showFilterSortPopup(data, icon)" [src]="getArrowSrc(data)"alt="icon"/>
+                <div #icon (click)="showFilterSortPopup(data, icon)" alt="icon" class="img">
+
+                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+                    <defs/>
+                    <!-- Base Icon - arrow down to show filter-sort popup -->
+                    <g [attr.fill]="themeColors[theme].text" class="fill-121313" transform="matrix(0.478275, 0, 0, 0.478275, 8.245858, 8.658251)">
+                      <path d="M30 0H2a2 2 0 0 0-2 2v28a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 30H2V2h28v28z"/>
+                      <path clip-rule="evenodd" d="M27 12.106c0-.564-.489-1.01-1.044-.995H6.013c-.887-.024-1.38 1.07-.742 1.702l9.999 9.9c.394.39 1.031.376 1.429 0l9.991-9.892a.988.988 0 0 0 .31-.715zm-11.016 8.485L8.418 13.1H23.55l-7.566 7.491z" fill-rule="evenodd"/>
+                    </g>
+
+                    <!-- Sorting is selected - draw triangle -->
+                    <path *ngIf="getArrowSrc(data) == 'arrowWithSort'" [attr.stroke]="themeColors[theme].text" d="M 26.538 -7.093 Q 27.182 -8.098 27.81 -7.093 L 30.918 -2.127 Q 31.546 -1.122 30.274 -1.122 L 23.984 -1.122 Q 22.712 -1.122 23.356 -2.127 Z" style="stroke-dashoffset: -1.5px; stroke-miterlimit: 18.05; stroke-linejoin: round; fill-rule: nonzero; fill: rgba(219, 209, 209, 0);" transform="matrix(1, 0, 0, -1, 0, 0)" bx:shape="triangle 22.712 -8.098 8.834 6.976 0.506 0.144 1@928e8a8f"/>
+
+                    <!-- Filter is selected - draw circle -->
+                    <ellipse *ngIf="getArrowSrc(data) == 'arrowWithPoint'" [attr.stroke]="themeColors[theme].text" style="fill: rgba(216, 216, 216, 0);" cx="27.34" cy="4.196" rx="3.217" ry="3.217"/>
+
+                    <!-- Filter and Sorting is selected - draw both -->
+                    <path *ngIf="getArrowSrc(data) == 'arrowWithPointAndSort'" [attr.stroke]="themeColors[theme].text" d="M 27.238 -5.933 Q 27.702 -6.656 28.154 -5.933 L 30.391 -2.357 Q 30.843 -1.634 29.927 -1.634 L 25.4 -1.634 Q 24.484 -1.634 24.947 -2.357 Z" style="stroke-dashoffset: -1.5px; stroke-miterlimit: 18.05; stroke-linejoin: round; fill-rule: nonzero; fill: rgba(219, 209, 209, 0);" transform="matrix(1, 0, 0, -1, 0, 0)" bx:shape="triangle 24.484 -6.656 6.359 5.022 0.506 0.144 1@0904c21f"/>
+                    <ellipse *ngIf="getArrowSrc(data) == 'arrowWithPointAndSort'" [attr.stroke]="themeColors[theme].text" style="fill: rgba(216, 216, 216, 0);" cx="21.021" cy="4.049" rx="2.528" ry="2.528"/>
+                  </svg>
+                </div>
               </div>
             </th>
           </tr>

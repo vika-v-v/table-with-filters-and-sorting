@@ -189,16 +189,17 @@ tr > th {
   align-items: center;
 }
 
-.header-content div {
-  margin-right: 5px;
+.header-content {
+  gap: 5px;
 }
 
 .option img {
   height: 1.5em;
 }
 
-.header-content img {
-  height: 2.5em;
+.header-content .img {
+  height: 2.2em;
+  padding: 3px 0;
 }
 
 .option div {

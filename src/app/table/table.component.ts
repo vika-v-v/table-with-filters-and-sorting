@@ -6,6 +6,7 @@ import { tableConfig } from './table-config.const';
 import { CustomDropdownComponent } from '../custom-dropdown/custom-dropdown.component';
 import { FilterType } from './filter-type.enum';
 import { themeColors } from './theme-colors';
+import { ArrowFunctionExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-table',
@@ -299,7 +300,7 @@ export class TableComponent {
   }
 
   // image je nach dem ob Filter und/oder Sortierung angezeigt ist anpassen
-  getArrowSrc(header: any) {
+  getArrowSrc(header: any): "arrow" | "arrowWithPoint" | "arrowWithSort" | "arrowWithPointAndSort" {
     const arrow = "assets/icons/box_arrow_down.svg";
     const arrowWithPoint = "assets/icons/box_arrow_down_with_point.svg";
     const arrowWithSort = "assets/icons/box_arrow_down_with_sort.svg";
@@ -315,11 +316,11 @@ export class TableComponent {
       if (sorting.selected) sortingUsed = true;
     }
 
-    if(filterUsed && sortingUsed) return arrowWithPointAndSort;
-    if(filterUsed) return arrowWithPoint;
-    if(sortingUsed) return arrowWithSort;
+    if(filterUsed && sortingUsed) return "arrowWithPointAndSort";
+    if(filterUsed) return "arrowWithPoint";
+    if(sortingUsed) return "arrowWithSort";
 
-    return arrow;
+    return "arrow";
   }
 
   // gibt an, ob irgendwelche Filter oder Sortierungen angewendet sind um das Button "Änderungen löschen" anzuzeigen
