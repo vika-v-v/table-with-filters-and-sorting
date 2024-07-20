@@ -36,11 +36,11 @@
       <table #table>
 
         <!-- Header mithilfe von Variable tableHeaderFormatted generieren -->
-        <thead>
+        <thead >
           <tr>
-            <th *ngFor="let data of tableHeaderFormatted">
+            <th *ngFor="let data of tableHeaderFormatted" [ngStyle]="{background: themeColors[theme]['table-header']}" class="outline-top-bottom">
               <div class="header-content">
-                <div class="grey-text">{{ data.wert }}</div>
+                <div [ngStyle]="{color: themeColors[theme].text}">{{ data.wert }}</div>
                 <img #icon (click)="showFilterSortPopup(data, icon)" [src]="getArrowSrc(data)"alt="icon"/>
               </div>
             </th>

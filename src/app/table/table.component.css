@@ -113,7 +113,6 @@ svg {
   max-width: calc(100% - 30px);
   min-width: calc(100% - 30px);
   position: relative;
-
 }
 
 #table-content-container {
@@ -121,7 +120,6 @@ svg {
   overflow-x: hidden;
   height: 100%;
   max-height: 100%;
-
   padding: 0;
   margin: 0;
 }
@@ -135,7 +133,7 @@ table {
   table-layout: auto;
   position: relative;
   border: 1px solid black;
-
+  border-top: none;
 }
 
 th, td {
@@ -144,7 +142,7 @@ th, td {
   font-size: small;
 }
 
-tr {
+tr:not(thead > tr):not(:first-child) {
   border-top: 1px solid black;
 }
 
@@ -156,11 +154,35 @@ thead {
 tr > th {
   padding: 2px 10px;
   text-align: left;
-  background-color: #24201d;
   position: sticky;
-  top: -1px;
+  top: 0;
   z-index: 2;
+  border: none;
 }
+
+.outline-top-bottom {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.outline-top-bottom::before,
+.outline-top-bottom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background-color: currentColor; /* Use the current text color */
+}
+
+.outline-top-bottom::before {
+  top: 0;
+}
+
+.outline-top-bottom::after {
+  bottom: 0;
+}
+
 
 .header-content, .option {
   display: flex;

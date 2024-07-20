@@ -1,8 +1,8 @@
 export const themeColors = {
   "light" : {
-    "background" : "#fafaff",
+    "background" : "#eeeeee",
     "second-background" : "#eef0f2",
-    "table-header" : "#daddd8",
+    "table-header" : "#e1e1e1",
     "text" : "#1c1c1c"
   },
   "dark" : {
