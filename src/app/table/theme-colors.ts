@@ -5,9 +5,9 @@ export const themeColors = {
     "table-header" : "#e1e1e1",
     "border-color": "#aeaeae",
     "text" : "#1c1c1c",
-    "popup-background-color" : "#b5b5b5",
+    "popup-background-color" : "#bfbfbf",
     "popup-button-color" : "#e1e1e1",
-    "popup-selected-button-color" : "#868686"
+    "popup-selected-button-color" : "#9b9b9b"
   },
   "dark" : {
     "background" : "#252525",

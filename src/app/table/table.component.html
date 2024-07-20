@@ -162,6 +162,7 @@
               [checked]="option.selected"
               (change)="option.selected = !option.selected; filterSelected()"
               class="custom-checkbox"
+              [ngStyle]="{backgroundColor: themeColors[theme]['popup-background-color'], borderColor: themeColors[theme].text, color: themeColors[theme].text}"
               id="{{option.name}}"
             />
             <label [ngStyle]="{color: themeColors[theme].text}" for="{{option.name}}">{{ option.name }}</label>
