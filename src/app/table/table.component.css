@@ -240,7 +240,7 @@ tr > th {
   font-size: small;
   border-radius: 4px;
   padding: 5px;
-  box-shadow: #00000061 2px 2px 1px 1px;
+  box-shadow: 5px 5px 10px #0b0908af;
 }
 
 .selected {

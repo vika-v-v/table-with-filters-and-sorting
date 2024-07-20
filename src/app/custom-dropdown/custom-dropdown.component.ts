@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { themeColors } from './theme-colors';
 
 @Component({
   selector: 'app-custom-dropdown',
@@ -17,6 +18,8 @@ export class CustomDropdownComponent {
   @Input() alwaysSelectOption: string | null = null;
 
   @Input() selectedOption: string | null = null;
+  @Input() theme: 'light' | 'dark' = 'light';
+
   @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>(); // Notifiziert über Änderungen der Auswahl
 
   dropdownOpen: boolean = false;
@@ -25,6 +28,8 @@ export class CustomDropdownComponent {
   upwards: boolean = false;
 
   @ViewChild('dropdown') dropdown!: ElementRef;
+
+  themeColors = themeColors;
 
   ngOnInit() {
     this.initializeDropdown();

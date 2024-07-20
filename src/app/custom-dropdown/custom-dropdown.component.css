@@ -5,7 +5,6 @@
   position: relative;
   border-radius: 4px;
   padding: 4px 8px;
-  background-color: #443f37;
   cursor: pointer;
 }
 
@@ -14,7 +13,6 @@
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
-  background-color: #443f37;
   font-size: 14px;
   height: 25px;
   white-space: nowrap;
@@ -38,7 +36,6 @@
   max-height: 40vh;
   overflow-y: auto;
 
-  background-color: #322e28;
   border-radius: 4px;
   box-shadow: 5px 5px 10px #0b0908af;
 
@@ -76,7 +73,7 @@
   bottom: 0;
 
   height: 1.5px;
-  background: linear-gradient(to right, #0e0c0a00, #0e0c0a, #0e0c0a00);
+  background: var(--option-after-gradient);
 }
 
 .option-text {
