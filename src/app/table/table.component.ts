@@ -82,11 +82,11 @@ export class TableComponent {
     this.initialTableDataFormatted = [...this.tableDataFormatted];
   }
 
-  // Positionierung des Popups beim Klicken anpassen
   showFilterSortPopup(column: any, placeNear: HTMLElement) {
     this.filterSortPopup = column;
     this.currentIcon = placeNear;
 
+    setTimeout(() => {
     const rect = placeNear.getBoundingClientRect();
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
@@ -96,7 +96,7 @@ export class TableComponent {
     let popupTop = rect.bottom + 5 + scrollTop;
 
     // Warten bis Element gesitioniert ist, um overflow zu prüfen
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       const popupWidth = this.popupRef.nativeElement.offsetWidth;
       const popupHeight = this.popupRef.nativeElement.offsetHeight;
       const screenWidth = window.innerWidth;
@@ -113,8 +113,10 @@ export class TableComponent {
       }
 
       this.popupPosition = { top: `${popupTop}px`, left: `${popupLeft}px` };
-    }, 1);
+    });
+  }, 1);
   }
+
 
   // Filter beim auswählen anwenden
   filterSelected() {

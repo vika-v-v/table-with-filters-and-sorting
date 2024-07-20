@@ -55,7 +55,7 @@ export class CustomDropdownComponent {
   toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
     if (this.dropdownOpen) {
-      setTimeout(() => this.setPosition(), 0);
+      setTimeout(() => this.setPosition(), 100);
     }
   }
 
