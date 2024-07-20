@@ -1,13 +1,13 @@
 <div class="dropdown-container" (clickOutside)="dropdownOpen = false" [ngStyle]="{backgroundColor: themeColors[theme]['default-color']}">
 
   <!-- Die Ausgewählte Option -->
-  <div class="selected-option" (click)="toggleDropdown()" #dropdown >
+  <div class="selected-option" (click)="toggleDropdown()" #dropdown [ngStyle]="{color: themeColors[theme].text}">
     <p>{{ selectedOption }}</p>
     <img class="dropdown-icon" src="assets/icons/caret_down_thin_icon.svg" alt="Dropdown Icon">
   </div>
 
   <!-- Alle Optionen -->
-  <div class="options-container" *ngIf="dropdownOpen" [ngClass]="{'upwards': upwards}" [ngStyle]="{backgroundColor: themeColors[theme]['options-container-color']}">
+  <div class="options-container" *ngIf="dropdownOpen" #optionsContainer [ngClass]="{'upwards': upwards}" [ngStyle]="{backgroundColor: themeColors[theme]['options-container-color'], color: themeColors[theme].text}">
     <div *ngFor="let option of options" (click)="selectOption(option)" class="option" [ngStyle]="{'--option-after-gradient': 'linear-gradient(to right, ' + themeColors[theme].text + '00, ' + themeColors[theme].text + ', ' + themeColors[theme].text + '00)', '--hover-color': themeColors[theme]['hovered-color']}">
       <p class="option-text">{{ option }}</p>
     </div>

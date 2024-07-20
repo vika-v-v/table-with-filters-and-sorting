@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { themeColors } from './theme-colors';
 
 @Component({
@@ -28,8 +28,11 @@ export class CustomDropdownComponent {
   upwards: boolean = false;
 
   @ViewChild('dropdown') dropdown!: ElementRef;
+  @ViewChild('optionsContainer') optionsContainer!: ElementRef;
 
   themeColors = themeColors;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.initializeDropdown();
@@ -51,6 +54,9 @@ export class CustomDropdownComponent {
 
   toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
+    if (this.dropdownOpen) {
+      setTimeout(() => this.setPosition(), 0);
+    }
   }
 
   // Ausgewählte Option wird ändern
@@ -71,9 +77,17 @@ export class CustomDropdownComponent {
     const dropdownRect = this.dropdown.nativeElement.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
     const spaceBelow = viewportHeight - dropdownRect.bottom;
-    const neededSpace = 200;
 
-    this.upwards = spaceBelow < neededSpace;
+    // Temporarily render the options container to measure its height
+    this.upwards = false;
+    this.cdr.detectChanges();
+
+    const optionsRect = this.optionsContainer.nativeElement.getBoundingClientRect();
+    const optionsHeight = optionsRect.height;
+
+    this.upwards = spaceBelow < optionsHeight;
+
+    this.cdr.detectChanges();
   }
 
   // Dropdown ausklappen, wenn außerhalb des Dropdowns geklickt wird
