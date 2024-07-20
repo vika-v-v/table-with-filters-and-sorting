@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngStyle]="{'--border-color': themeColors[theme]['border-color'], '--selected-area': themeColors[theme]['selected-area'], '--non-selected-area': themeColors[theme]['non-selected-area'], '--handle': themeColors[theme]['handle'], '--text-color': themeColors[theme].text}">
 
   <!-- Slider generieren -->
   <div class="range-slider">
@@ -10,8 +10,8 @@
 
   <!-- Anzeige von aktuellen Werten-->
   <div class="values">
-    <div class="grey-text">{{ min }}</div>
-    <div class="grey-text">{{ value1 }} - {{ value2 }}</div>
-    <div class="grey-text">{{ max }}</div>
+    <div class="text">{{ min }}</div>
+    <div class="text">{{ value1 }} - {{ value2 }}</div>
+    <div class="text">{{ max }}</div>
   </div>
 </div>

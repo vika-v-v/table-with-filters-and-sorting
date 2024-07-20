@@ -144,11 +144,12 @@
         <app-range-slider
           [min]="filterOption.min"
           [max]="filterOption.max"
-          [step]="1"
+          [step]="filterOption.min > 10000 ? 100 : 1"
           [(value1)]="filterOption.value1"
           [(value2)]="filterOption.value2"
           (value1Change)="filterSelected()"
           (value2Change)="filterSelected()"
+          [theme]="theme"
         ></app-range-slider>
       </div>
 

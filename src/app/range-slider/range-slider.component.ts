@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { themeColors } from './theme-colors';
 
 @Component({
   selector: 'app-range-slider',
@@ -19,6 +20,7 @@ export class RangeSliderComponent {
   @Input() step!: number;
   @Input() value1!: number;
   @Input() value2!: number;
+  @Input() theme: 'light' | 'dark' = 'light';
 
   // Andere Komponenten notifizieren, wenn sich die Werte ändern
   @Output() value1Change = new EventEmitter<number>();
@@ -27,6 +29,8 @@ export class RangeSliderComponent {
   // Für die Darstellung des Tracks benötigt
   trackLeft: string = '';
   trackWidth: string = '';
+
+  themeColors = themeColors;
 
   ngOnInit() {
     this.updateTrackStyles();
