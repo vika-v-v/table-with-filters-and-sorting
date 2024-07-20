@@ -7,6 +7,7 @@
   height: 100%;
 }
 
+
 #header {
   font-size: calc(4vw + 1vmin);
   max-height: 25vh;
@@ -17,11 +18,11 @@
   align-self: center;
   text-align: center;
   z-index: 1;
-  display: flex;  /* Enable Flexbox */
-  align-items: center;  /* Center vertically */
-  justify-content: center;  /* Center horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
-  background: linear-gradient(to right, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 50%);
+  background: linear-gradient(to right, rgb(95, 95, 95) 50%, rgb(229, 229, 229) 50%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -29,6 +30,8 @@
   padding-top: 20px;
   margin: 0;
 }
+
+
 
 #tables-container {
   display: flex;

@@ -3,15 +3,15 @@
 <!-- Dunklen Hintergrund anzeigen falls größe Ansicht geöffnet -->
 <div *ngIf="wideOpen" class="background" (click)="wideOpen = false;"></div>
 
-<div id="container" [ngClass]="{'wide-open': wideOpen}" [ngStyle]="{'--border-color': themeColors[theme]['border-color'], '--text-color': themeColors[theme].text}">
+<div id="container" [ngClass]="{'wide-open': wideOpen}" [ngStyle]="{'--border-color': themeColors[theme]['border-color'], '--text-color': themeColors[theme].text, '--main-background': themeColors[theme].background, '--table-header': themeColors[theme]['table-header'], '--second-background': themeColors[theme]['second-background']}">
 
   <!-- Name und action-Butons anzeigen -->
   <div id="top-elements-container">
-    <p *ngIf="name != ''" class="name" [ngStyle]="{color: themeColors[theme].text}">{{ name }}</p>
+    <p *ngIf="name != ''" class="name">{{ name }}</p>
     <div id="table-actions">
-      <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()" [ngStyle]="{background: themeColors[theme].background}">Änderungen löschen</button>
+      <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()">Änderungen löschen</button>
 
-      <div *ngIf="!wideOpen" (click)="wideOpen = true;" [ngStyle]="{background: themeColors[theme].background}" class="img">
+      <div *ngIf="!wideOpen" (click)="wideOpen = true;" class="img">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
           <path fill="none" d="M0 0h256v256H0z"></path>
           <path [attr.stroke]="themeColors[theme].text" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"
@@ -19,7 +19,7 @@
         </svg>
       </div>
 
-      <div *ngIf="wideOpen" (click)="wideOpen = false;" [ngStyle]="{background: themeColors[theme].background}" class="img">
+      <div *ngIf="wideOpen" (click)="wideOpen = false;" class="img">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
           <path fill="none" d="M0 0h256v256H0z"></path>
           <path [attr.stroke]="themeColors[theme].text" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"
@@ -31,14 +31,14 @@
   </div>
 
   <!-- Tabelle dynamisch generieren -->
-  <div id="table-container" [ngStyle]="{background: themeColors[theme].background}">
+  <div id="table-container">
     <div *ngIf="tableDataFormatted.length > 0" id="table-content-container">
       <table #table>
 
         <!-- Header mithilfe von Variable tableHeaderFormatted generieren -->
         <thead>
           <tr>
-            <th *ngFor="let data of tableHeaderFormatted" [ngStyle]="{background: themeColors[theme]['table-header']}" class="outline-top-bottom">
+            <th *ngFor="let data of tableHeaderFormatted" class="outline-top-bottom">
               <div class="header-content">
                 <div>{{ data.wert }}</div>
                 <div #icon (click)="showFilterSortPopup(data, icon)" alt="icon" class="img">
