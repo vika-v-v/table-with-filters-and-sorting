@@ -131,10 +131,12 @@
       <!-- Text Filter, u. a. für Namen benutzt -->
       <div *ngIf="filterOption.typ === 'Textfeld'" class="filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
-        <input class="grey-text textfield"
+        <input class="textfield"
           type="text"
           [(ngModel)]="filterOption.selected"
           (ngModelChange)="filterSelected()"
+          size="10"
+          [ngStyle]="{color: themeColors[theme].text, backgroundColor: themeColors[theme]['popup-selected-button-color'], borderColor: themeColors[theme]['border-color']}"
         />
       </div>
 

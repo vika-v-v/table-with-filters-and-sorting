@@ -1,6 +1,6 @@
 export const themeColors = {
   "light" : {
-    "default-color" : "#868686",
+    "default-color" : "#999999",
     "options-container-color" : "#a6a6a6",
     "hovered-color" : "#c2c2c2",
     "border-color": "#aeaeae",

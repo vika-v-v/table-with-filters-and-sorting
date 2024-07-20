@@ -7,7 +7,7 @@ export const themeColors = {
     "text" : "#1c1c1c",
     "popup-background-color" : "#bfbfbf",
     "popup-button-color" : "#e1e1e1",
-    "popup-selected-button-color" : "#9b9b9b"
+    "popup-selected-button-color" : "#999999"
   },
   "dark" : {
     "background" : "#252525",
