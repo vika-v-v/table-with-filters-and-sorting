@@ -28,7 +28,7 @@ export class TableComponent {
   @Input() tableData: any[] = [];
   @Input() name: string = '';
   @Input() leerFehlermeldung: string = 'Noch nicht vorhanden.';
-  @Input() theme: "light" | "dark" = "light";
+  @Input() theme: 'light' | 'dark' = 'light';
 
   // Formatierte Eingabedaten, die u. a. angeben, ob eine Zeile angezeigt werden soll
   tableDataFormatted: any[] = [];
@@ -113,7 +113,7 @@ export class TableComponent {
       }
 
       this.popupPosition = { top: `${popupTop}px`, left: `${popupLeft}px` };
-    }, 0);
+    }, 1);
   }
 
   // Filter beim auswählen anwenden
@@ -267,7 +267,7 @@ export class TableComponent {
           for (let sorting of filterSorting.Sortings) {
             let sortingObject: any = {};
             sortingObject.name = sorting.Name;
-            sortingObject.imagesrc = sorting.ImageSrc;
+            sortingObject.icon = sorting.Icon;
             sortingObject.selected = false;
             sortingObject.key = sorting.Key;
 
@@ -301,11 +301,6 @@ export class TableComponent {
 
   // image je nach dem ob Filter und/oder Sortierung angezeigt ist anpassen
   getArrowSrc(header: any): "arrow" | "arrowWithPoint" | "arrowWithSort" | "arrowWithPointAndSort" {
-    const arrow = "assets/icons/box_arrow_down.svg";
-    const arrowWithPoint = "assets/icons/box_arrow_down_with_point.svg";
-    const arrowWithSort = "assets/icons/box_arrow_down_with_sort.svg";
-    const arrowWithPointAndSort = "assets/icons/box_arrow_down_with_point_and_sort.svg";
-
     let filterUsed = false;
     let sortingUsed = false;
 

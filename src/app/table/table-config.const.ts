@@ -1,8 +1,5 @@
 import { FilterType } from "./filter-type.enum";
 
-let arrowUp = 'assets/icons/arrow_up_thin_icon.svg';
-let arrowDown = 'assets/icons/arrow_down_thin_icon.svg';
-
 export const tableConfig = [
   {
     "FilterType": FilterType.Date,
@@ -10,12 +7,12 @@ export const tableConfig = [
       {
         "Name": "Aufsteigend sortieren (früher bis später)",
         "Key": "asc",
-        "ImageSrc": arrowUp
+        "Icon": "ArrowUp"
       },
       {
         "Name": "Absteigend sortieren (später bis früher)",
         "Key": "desc",
-        "ImageSrc": arrowDown
+        "Icon": "ArrowDown"
       }
     ],
     "Filters": [
@@ -33,12 +30,12 @@ export const tableConfig = [
       {
         "Name": "Aufsteigend sortieren (A-Z)",
         "Key": "asc",
-        "ImageSrc": arrowUp
+        "Icon": "ArrowUp"
       },
       {
         "Name": "Absteigend sortieren (Z-A)",
         "Key": "desc",
-        "ImageSrc": arrowDown
+        "Icon": "ArrowDown"
       }
     ],
     "Filters": [
@@ -54,12 +51,12 @@ export const tableConfig = [
       {
         "Name": "Aufsteigend sortieren (klein bis groß)",
         "Key": "asc",
-        "ImageSrc": arrowUp
+        "Icon": "ArrowUp"
       },
       {
         "Name": "Absteigend sortieren (groß bis klein)",
         "Key": "desc",
-        "ImageSrc": arrowDown
+        "Icon": "ArrowDown"
       }
     ],
     "Filters": [
@@ -75,12 +72,12 @@ export const tableConfig = [
       {
         "Name": "Aufsteigend sortieren (klein bis groß)",
         "Key": "asc",
-        "ImageSrc": arrowUp
+        "Icon": "ArrowUp"
       },
       {
         "Name": "Absteigend sortieren (groß bis klein)",
         "Key": "desc",
-        "ImageSrc": arrowDown
+        "Icon": "ArrowDown"
       }
     ],
     "Filters": [
@@ -96,12 +93,12 @@ export const tableConfig = [
       {
         "Name": "Aufsteigend sortieren (A-Z)",
         "Key": "asc",
-        "ImageSrc": arrowUp
+        "Icon": "ArrowUp"
       },
       {
         "Name": "Absteigend sortieren (Z-A)",
         "Key": "desc",
-        "ImageSrc": arrowDown
+        "Icon": "ArrowDown"
       }
     ],
     "Filters": [
