@@ -11,7 +11,7 @@ export const themeColors = {
   },
   "dark" : {
     "background" : "#252525",
-    "second-background" : "#2e2e2e",
+    "second-background" : "#151515",
     "table-header" : "#464646",
     "border-color": "#606060",
     "text" : "#eef0ef",
