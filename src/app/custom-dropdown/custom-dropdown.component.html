@@ -3,7 +3,10 @@
   <!-- Die Ausgewählte Option -->
   <div class="selected-option" (click)="toggleDropdown()" #dropdown [ngStyle]="{color: themeColors[theme].text}">
     <p>{{ selectedOption }}</p>
-    <img class="dropdown-icon" src="assets/icons/caret_down_thin_icon.svg" alt="Dropdown Icon">
+    <svg class="dropdown-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <path fill="none" d="M0 0h256v256H0z"></path>
+      <path fill="none" [attr.stroke]="themeColors[theme].text" stroke="#dbd1d1" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" d="m208 96-80 80-80-80" class="stroke-000000"></path>
+    </svg>
   </div>
 
   <!-- Alle Optionen -->
