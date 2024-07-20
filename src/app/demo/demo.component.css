@@ -21,7 +21,7 @@
   align-items: center;  /* Center vertically */
   justify-content: center;  /* Center horizontally */
   z-index: 1;
-  background: linear-gradient(to right, black 50%, white 50%);
+  background: linear-gradient(to right, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 50%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -43,7 +43,7 @@
 #cars-container, #cities-container {
   width: 50%;
   height: 100%;
-  padding: 10px;
+  padding: 15px 30px;
   position: relative;
 }
 
@@ -62,5 +62,5 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  height: calc(75vh - 35px);
+  height: calc(75vh - 65px);
 }

@@ -3,12 +3,14 @@ export const themeColors = {
     "background" : "#eeeeee",
     "second-background" : "#eef0f2",
     "table-header" : "#e1e1e1",
+    "border-color": "#aeaeae",
     "text" : "#1c1c1c"
   },
   "dark" : {
-    "background" : "#0d0d0d",
-    "second-background" : "#373737",
-    "table-header" : "#505457",
-    "text" : "#f8f7f2"
+    "background" : "#252525",
+    "second-background" : "#2e2e2e",
+    "table-header" : "#4b4b4b",
+    "border-color": "#bdbec0",
+    "text" : "#eef0ef"
   }
 };

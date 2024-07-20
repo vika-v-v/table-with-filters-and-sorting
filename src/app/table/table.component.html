@@ -3,13 +3,13 @@
 <!-- Dunklen Hintergrund anzeigen falls größe Ansicht geöffnet -->
 <div *ngIf="wideOpen" class="background" (click)="wideOpen = false;"></div>
 
-<div id="container" [ngClass]="{'wide-open': wideOpen}">
+<div id="container" [ngClass]="{'wide-open': wideOpen}" [ngStyle]="{'--border-color': themeColors[theme]['border-color'], '--text-color': themeColors[theme].text}">
 
   <!-- Name und action-Butons anzeigen -->
   <div id="top-elements-container">
     <p *ngIf="name != ''" class="name" [ngStyle]="{color: themeColors[theme].text}">{{ name }}</p>
     <div id="table-actions">
-      <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()" [ngStyle]="{color: themeColors[theme].text, background: themeColors[theme].background, borderColor: themeColors[theme]['second-background'] }">Änderungen löschen</button>
+      <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()" [ngStyle]="{background: themeColors[theme].background}">Änderungen löschen</button>
 
       <div *ngIf="!wideOpen" (click)="wideOpen = true;" [ngStyle]="{background: themeColors[theme].background}" class="img">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
@@ -36,11 +36,11 @@
       <table #table>
 
         <!-- Header mithilfe von Variable tableHeaderFormatted generieren -->
-        <thead >
+        <thead>
           <tr>
             <th *ngFor="let data of tableHeaderFormatted" [ngStyle]="{background: themeColors[theme]['table-header']}" class="outline-top-bottom">
               <div class="header-content">
-                <div [ngStyle]="{color: themeColors[theme].text}">{{ data.wert }}</div>
+                <div>{{ data.wert }}</div>
                 <div #icon (click)="showFilterSortPopup(data, icon)" alt="icon" class="img">
 
                   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
@@ -74,14 +74,14 @@
               <td *ngFor="let item of data.row">
                 <div *ngIf="item.highlightedRange && filterSortPopup != null">
                   <!-- So eine Struktur mit span's wird für die Markierung bei der Anwendung vom Text-Filter benötigt -->
-                  <span class="grey-text">{{ item.wert.substring(0, item.highlightedRange.start) }}</span>
+                  <span class="table-text">{{ item.wert.substring(0, item.highlightedRange.start) }}</span>
                   <span>
                     <mark>{{ item.wert.substring(item.highlightedRange.start, item.highlightedRange.end)}}</mark>
                   </span>
-                  <span class="grey-text">{{ item.wert.substring(item.highlightedRange.end, item.wert.length) }}</span>
+                  <span class="table-text">{{ item.wert.substring(item.highlightedRange.end, item.wert.length) }}</span>
                 </div>
                 <!-- Keine Markierung wegen Textfilter benötigt -->
-                <div *ngIf="!item.highlightedRange || filterSortPopup == null" class="grey-text">
+                <div *ngIf="!item.highlightedRange || filterSortPopup == null" class="table-text">
                   {{ item.wert }}
                 </div>
               </td>
