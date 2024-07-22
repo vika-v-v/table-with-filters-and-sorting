@@ -115,20 +115,30 @@ table {
   border-top: none;
 }
 
-th, td {
-  max-width: 100%;
-  padding: 7px;
-  font-size: small;
+.header-content {
+  gap: 5px;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+}
+
+.header-content .img {
+  height: 2.2em;
+  width: 2.2em;
+  min-height: 2.2em;
+  min-width: 2.2em;
+  padding: 3px 0;
 }
 
 tr:not(thead > tr):not(:first-child) {
   border-top: 1px solid var(--border-color);
 }
 
-thead {
-  z-index: 1;
+th, td {
+  max-width: 100%;
+  padding: 7px;
+  font-size: small;
 }
-
 
 tr > th {
   padding: 3px 10px;
@@ -138,6 +148,10 @@ tr > th {
   z-index: 2;
   background-color: var(--table-header);
   border: none;
+}
+
+.table-text {
+  color: var(--text-color);
 }
 
 /* Border for the header is drawn like this because usual border in not shown because of the 'sticky' property of the header */
@@ -162,16 +176,6 @@ tr > th {
 
 .outline-top-bottom::after {
   bottom: 0;
-}
-
-.header-content, .option {
-  display: flex;
-  align-items: center;
-}
-
-.header-content {
-  gap: 5px;
-  color: var(--text-color);
 }
 
 /* ----------------- */
@@ -215,49 +219,13 @@ tr > th {
   z-index: 2;
 }
 
-
-
-.option .img {
-  height: 1.5em;
-  width: 1.5em;
-}
-
-.header-content .img {
-  height: 2.2em;
-  width: 2.2em;
-  min-height: 2.2em;
-  min-width: 2.2em;
-  padding: 3px 0;
-}
-
-.table-text {
-  color: var(--text-color);
-}
-
-.option div {
-  margin-left: 12px;
-}
-
-.filter label {
-  margin-right: 8px;
-}
-
-.filter {
-  margin: 10px;
-}
-
-.option {
-  padding: 5px;
-  margin: 5px;
-  border-radius: 4px;
-  border: 1px solid black;
-}
+/* --------------------- */
+/* Filter and sort Popup */
+/* --------------------- */
 
 .filter-sort-popup {
   position: fixed;
   z-index: 3;
-
-
 }
 
 .popup-content {
@@ -268,9 +236,40 @@ tr > th {
   box-shadow: 5px 5px 10px #0b0908af;
 }
 
+/* Option is one line in the filter-sort popup */
+.option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+.option .img {
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.option div {
+  margin-left: 12px;
+}
+
+/* Show filters as buttons */
+.filter {
+  margin: 10px;
+}
+
+.filter label {
+  margin-right: 8px;
+}
+
+/* Filter is selected */
 .selected {
   background-color: #6e6052;
 }
+
+/* Styling for possible filters */
 
 .slider-filter {
   display: flex;
@@ -297,8 +296,6 @@ tr > th {
   box-sizing: border-box;
   padding: 1px;
 }
-
-
 
 .custom-checkbox {
   position: relative;
@@ -336,5 +333,3 @@ tr > th {
 .dropdown-filter > label {
   margin-right: 10px;
 }
-
-
