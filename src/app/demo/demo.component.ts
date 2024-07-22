@@ -74,8 +74,8 @@ export class DemoComponent {
   ];
 
   citiesTableData = [
-    ["Berlin", 3500000, "Germany", "Berlin, the capital of Germany, is home to the largest train station in Europe, the Berlin Hauptbahnhof."],
-    ["Mannheim", 550000, "Germany", "Mannheim is famous for its unique grid layout, where streets intersect at right angles, creating a checkerboard pattern."],
-    ["Hamburg", 600000, "Germany", "Hamburg is the city with the most bridges of any city in the world. With over 2,500 bridges, it surpasses Venice, Amsterdam, and London combined."]
+    ["Berlin", 3645000, "Germany", "Berlin, the capital of Germany, is home to the largest train station in Europe, the Berlin Hauptbahnhof."],
+    ["Mannheim", 309370, "Germany", "Mannheim is famous for its unique grid layout, where streets intersect at right angles, creating a checkerboard pattern."],
+    ["Hamburg", 1841000, "Germany", "Hamburg is the city with the most bridges of any city in the world. With over 2,500 bridges, it surpasses Venice, Amsterdam, and London combined."]
   ];
 }
