@@ -9,7 +9,7 @@
     </svg>
   </div>
 
-  <!-- Alle Optionen -->
+  <!-- Alle Options -->
   <div class="options-container" *ngIf="dropdownOpen" #optionsContainer [ngClass]="{'upwards': upwards}" [ngStyle]="{backgroundColor: themeColors[theme]['options-container-color'], color: themeColors[theme].text}">
     <div *ngFor="let option of options" (click)="selectOption(option)" class="option" [ngStyle]="{'--option-after-gradient': 'linear-gradient(to right, ' + themeColors[theme].text + '00, ' + themeColors[theme].text + ', ' + themeColors[theme].text + '00)', '--hover-color': themeColors[theme]['hovered-color']}">
       <p class="option-text">{{ option }}</p>

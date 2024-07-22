@@ -309,9 +309,10 @@ tr > th {
   margin-right: 10px;
 }
 
-#leer-fehlermeldung {
+#error-empty {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--text-color);
 }

@@ -20,3 +20,8 @@ You will see the demo-app containing two tables with example data. You can now t
 </pre>
 
 You can find the example usage of the table in the component <a href="src\app\demo">demo</a>, to change the data insert your own one in <a href="src\app\demo\demo.component.ts">demo.component.ts</a>, to change the tables theme, positioning, size and so on, use <a href="src\app\demo\demo.component.css">demo.component.css</a> and <a href="src\app\demo\demo.component.html">demo.component.html</a>. You will find the detailed explanation as to how the tables work in the section 'Code Structure' below.
+
+# Customizing the table
+Changing the text filter to object filter and back
+
+## Adding the theme

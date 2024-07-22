@@ -24,7 +24,7 @@ export class CustomDropdownComponent {
 
   dropdownOpen: boolean = false;
 
-  // Optionen können etweder oben oder unten angezeigt werden, diese Variable bestimmt die Richtung
+  // Options können etweder oben oder unten angezeigt werden, diese Variable bestimmt die Richtung
   upwards: boolean = false;
 
   @ViewChild('dropdown') dropdown!: ElementRef;

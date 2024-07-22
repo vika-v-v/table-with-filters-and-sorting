@@ -9,7 +9,7 @@
   <div id="top-elements-container">
     <p *ngIf="name != ''" class="name">{{ name }}</p>
     <div id="table-actions">
-      <button *ngIf="aenderungenLoeschenAngezeigt()" (click)="aenderungenLoeschen()">Änderungen löschen</button>
+      <button *ngIf="removeChangesDisplayed()" (click)="removeChanges()">Remove Changes</button>
 
       <div *ngIf="!wideOpen" (click)="wideOpen = true;" class="img">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
@@ -93,8 +93,8 @@
     </div>
 
     <!-- Fehlermeldung anzeigen falls keine Daten vorhanden sind -->
-    <div *ngIf="tableDataFormatted.length == 0" id="leer-fehlermeldung">
-      <p class="grey-text">{{leerFehlermeldung}}</p>
+    <div *ngIf="tableDataFormatted.length == 0" id="error-empty">
+      <p class="grey-text">{{errorEmpty}}</p>
     </div>
   </div>
 </div>
@@ -125,11 +125,11 @@
       <!-- Dropdown Filter, u. a. für das Datumfilter benutzt -->
       <div *ngIf="filterOption.typ === 'Dropdown'" class="filter dropdown-filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
-        <app-custom-dropdown [options]="filterOption.optionen" [selectedOption]="selectedDropdownOption" (selectionChange)="filterOption.selected = $event; filterSelected()" [theme]="theme"></app-custom-dropdown>
+        <app-custom-dropdown [options]="filterOption.Options" [selectedOption]="selectedDropdownOption" (selectionChange)="filterOption.selected = $event; filterSelected()" [theme]="theme"></app-custom-dropdown>
       </div>
 
       <!-- Text Filter, u. a. für Namen benutzt -->
-      <div *ngIf="filterOption.typ === 'Textfeld'" class="filter">
+      <div *ngIf="filterOption.typ === 'Textfield'" class="filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
         <input class="textfield"
           type="text"
@@ -159,7 +159,7 @@
       <div *ngIf="filterOption.typ === 'Checkbox'" class="filter checkbox-filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
         <div class="checkbox-container">
-          <div *ngFor="let option of filterOption.optionen" class="checkbox-option">
+          <div *ngFor="let option of filterOption.Options" class="checkbox-option">
             <input
               type="checkbox"
               [checked]="option.selected"

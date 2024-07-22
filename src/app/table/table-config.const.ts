@@ -5,22 +5,22 @@ export const tableConfig = [
     "FilterType": FilterType.Date,
     "Sortings": [
       {
-        "Name": "Aufsteigend sortieren (früher bis später)",
+        "Name": "Sort ascending (earlier to later)",
         "Key": "asc",
         "Icon": "ArrowUp"
       },
       {
-        "Name": "Absteigend sortieren (später bis früher)",
+        "Name": "Sort descending (later to earlier)",
         "Key": "desc",
         "Icon": "ArrowDown"
       }
     ],
     "Filters": [
       {
-        "Name": "Zeitraum",
-        "Typ": "Dropdown",
-        "Optionen": ["Alle Perioden", "Heute", "Gestern", "Diese Woche", "Dieser Monat", "Dieses Jahr"],
-        "DefaultSelected": "Alle Perioden"
+        "Name": "Time period",
+        "Type": "Dropdown",
+        "Options": ["All periods", "Today", "Yesterday", "This week", "This month", "This year"],
+        "DefaultSelected": "All periods"
       }
     ]
   },
@@ -28,20 +28,20 @@ export const tableConfig = [
     "FilterType": FilterType.Text,
     "Sortings": [
       {
-        "Name": "Aufsteigend sortieren (A-Z)",
+        "Name": "Sort ascending (A-Z)",
         "Key": "asc",
         "Icon": "ArrowUp"
       },
       {
-        "Name": "Absteigend sortieren (Z-A)",
+        "Name": "Sort descending (Z-A)",
         "Key": "desc",
         "Icon": "ArrowDown"
       }
     ],
     "Filters": [
       {
-        "Name": "Filtern nach...",
-        "Typ": "Textfeld"
+        "Name": "Filter by...",
+        "Type": "Textfield"
       }
     ]
   },
@@ -49,20 +49,20 @@ export const tableConfig = [
     "FilterType": FilterType.Number,
     "Sortings": [
       {
-        "Name": "Aufsteigend sortieren (klein bis groß)",
+        "Name": "Sort ascending (small to large)",
         "Key": "asc",
         "Icon": "ArrowUp"
       },
       {
-        "Name": "Absteigend sortieren (groß bis klein)",
+        "Name": "Sort descending (large to small)",
         "Key": "desc",
         "Icon": "ArrowDown"
       }
     ],
     "Filters": [
       {
-        "Name": "Reichweite auswählen",
-        "Typ": "Slider"
+        "Name": "Select range",
+        "Type": "Slider"
       }
     ]
   },
@@ -70,20 +70,20 @@ export const tableConfig = [
     "FilterType": FilterType.Decimal,
     "Sortings": [
       {
-        "Name": "Aufsteigend sortieren (klein bis groß)",
+        "Name": "Sort ascending (small to large)",
         "Key": "asc",
         "Icon": "ArrowUp"
       },
       {
-        "Name": "Absteigend sortieren (groß bis klein)",
+        "Name": "Sort descending (large to small)",
         "Key": "desc",
         "Icon": "ArrowDown"
       }
     ],
     "Filters": [
       {
-        "Name": "Reichweite auswählen",
-        "Typ": "Slider"
+        "Name": "Select range",
+        "Type": "Slider"
       }
     ]
   },
@@ -91,20 +91,20 @@ export const tableConfig = [
     "FilterType": FilterType.Object,
     "Sortings": [
       {
-        "Name": "Aufsteigend sortieren (A-Z)",
+        "Name": "Sort ascending (A-Z)",
         "Key": "asc",
         "Icon": "ArrowUp"
       },
       {
-        "Name": "Absteigend sortieren (Z-A)",
+        "Name": "Sort descending (Z-A)",
         "Key": "desc",
         "Icon": "ArrowDown"
       }
     ],
     "Filters": [
       {
-        "Name": "Anzeigen",
-        "Typ": "Checkbox"
+        "Name": "Show",
+        "Type": "Checkbox"
       }
     ]
   }

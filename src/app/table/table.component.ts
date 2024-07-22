@@ -26,7 +26,7 @@ export class TableComponent {
   @Input() tableHeader: any[] = [];
   @Input() tableData: any[] = [];
   @Input() name: string = '';
-  @Input() leerFehlermeldung: string = 'Noch nicht vorhanden.';
+  @Input() errorEmpty: string = 'Not yet available.';
   @Input() theme: 'light' | 'dark' = 'light';
 
   // Formatierte Eingabedaten, die u. a. angeben, ob eine Zeile angezeigt werden soll
@@ -132,7 +132,7 @@ export class TableComponent {
       for (let j = 0; j < header.filters.length; j++) {
         let filter = header.filters[j];
 
-        // Entsprehene Methode für den Filter-Typ aufrufen
+        // Entsprehene Methode für den Filter-Type aufrufen
         if (header.typ == FilterType.Date) {
           this.filterTypeDateAnwenden(filter, header, i);
         }
@@ -223,7 +223,7 @@ export class TableComponent {
     }
   }
 
-  // über alle Informationen im Tabellenkontent durchegehen und je nach dem Typ benötigte Formatierungen hinzufügen
+  // über alle Informationen im Tabellenkontent durchegehen und je nach dem Type benötigte Formatierungen hinzufügen
   private initTableData() {
     for (let j = 0; j < this.tableData.length; j++) {
       let row = [];
@@ -281,15 +281,15 @@ export class TableComponent {
           for (let filter of filterSorting.Filters) {
             let filterObject: any = {};
             filterObject.name = filter.Name;
-            filterObject.typ = filter.Typ;
+            filterObject.typ = filter.Type;
             filterObject.filterUsed = false;
 
             // Spezielle Parameter für bestimmte Filter hinzufügen
-            if ('Optionen' in filter) filterObject.optionen = filter.Optionen;
+            if ('Options' in filter) filterObject.Options = filter.Options;
             if ('DefaultSelected' in filter) filterObject.selected = filter.DefaultSelected;
 
-            if (filter.Typ == 'Slider') this.initSliderParameters(filterObject, i);
-            if (filter.Typ == 'Checkbox') this.initCheckboxParameters(i, filterObject);
+            if (filter.Type == 'Slider') this.initSliderParameters(filterObject, i);
+            if (filter.Type == 'Checkbox') this.initCheckboxParameters(i, filterObject);
 
             filters.push(filterObject);
           }
@@ -320,7 +320,7 @@ export class TableComponent {
   }
 
   // gibt an, ob irgendwelche Filter oder Sortierungen angewendet sind um das Button "Änderungen löschen" anzuzeigen
-  aenderungenLoeschenAngezeigt(): boolean {
+  removeChangesDisplayed(): boolean {
     let angezeigt = false;
 
     this.tableHeaderFormatted.forEach((h: any) => {
@@ -336,7 +336,7 @@ export class TableComponent {
   }
 
   // für das Button "Änderungen löschen" benötigt
-  aenderungenLoeschen() {
+  removeChanges() {
     this.tableDataFormatted = [];
     this.tableHeaderFormatted = [];
     this.initialTableDataFormatted = [];
@@ -358,12 +358,12 @@ export class TableComponent {
   // ------------------------
 
   private initCheckboxParameters(i: number, filterObject: any) {
-    let optionen = [];
+    let Options = [];
     let uniqueValues = [...new Set(this.tableData.map(row => row[i]))];
     for (let value of uniqueValues) {
-      optionen.push({ name: value, selected: true });
+      Options.push({ name: value, selected: true });
     }
-    filterObject.optionen = optionen;
+    filterObject.Options = Options;
   }
 
   private initSliderParameters(filterObject: any, i: number) {
@@ -380,7 +380,7 @@ export class TableComponent {
 
   private filterTypeObjectAnwenden(filter: any, i: number, header: any) {
     this.tableDataFormatted.forEach((line: any) => {
-      if (!(filter.optionen.find((option: any) => option.selected && option.name == line.row[i].wert))) {
+      if (!(filter.Options.find((option: any) => option.selected && option.name == line.row[i].wert))) {
         line.shown = false;
         header.filterUsed = true;
       }
@@ -413,19 +413,19 @@ export class TableComponent {
   }
 
   private filterTypeDateAnwenden(filter: any, header: any, i: number) {
-    if (filter.selected == "Heute") {
+    if (filter.selected == "Today") {
       header.filterUsed = this.filterToday(i) ?? true;
     }
-    else if (filter.selected == "Gestern") {
+    else if (filter.selected == "Yesterday") {
       header.filterUsed = this.filterYesterday(i) ?? true;
     }
-    else if (filter.selected == "Diese Woche") {
+    else if (filter.selected == "This week") {
       header.filterUsed = this.filterByWeek(i) ?? true;
     }
-    else if (filter.selected == "Dieser Monat") {
+    else if (filter.selected == "This month") {
       header.filterUsed = this.filterByMonth(i) ?? true;
     }
-    else if (filter.selected == "Dieses Jahr") {
+    else if (filter.selected == "This year") {
       header.filterUsed = this.filterByYear(i) ?? true;
     }
   }
