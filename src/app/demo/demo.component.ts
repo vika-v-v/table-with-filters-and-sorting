@@ -13,10 +13,10 @@ import { FilterType } from '../table/filter-type.enum';
 })
 export class DemoComponent {
   carsTableHeader = [
-    { "wert": "Rented On", "typ": FilterType.Date },
-    { "wert": "Brand", "typ": FilterType.Object },
-    { "wert": "Price for hour", "typ": FilterType.Decimal },
-    { "wert": "Customer", "typ": FilterType.Text }
+    { "value": "Rented On", "type": FilterType.Date },
+    { "value": "Brand", "type": FilterType.Object },
+    { "value": "Price for hour", "type": FilterType.Decimal },
+    { "value": "Customer", "type": FilterType.Text }
   ];
 
   carsTableData = [
@@ -67,10 +67,10 @@ export class DemoComponent {
   ]
 
   citiesTableHeader = [
-    { "wert": "Name", "typ": FilterType.Text },
-    { "wert": "Population", "typ": FilterType.Number },
-    { "wert": "Country", "typ": FilterType.Object },
-    { "wert": "Notes", "typ": FilterType.Text }
+    { "value": "Name", "type": FilterType.Text },
+    { "value": "Population", "type": FilterType.Number },
+    { "value": "Country", "type": FilterType.Object },
+    { "value": "Notes", "type": FilterType.Text }
   ];
 
   citiesTableData = [

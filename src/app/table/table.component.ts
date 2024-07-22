@@ -133,16 +133,16 @@ export class TableComponent {
         let filter = header.filters[j];
 
         // Entsprehene Methode für den Filter-Type aufrufen
-        if (header.typ == FilterType.Date) {
+        if (header.type == FilterType.Date) {
           this.filterTypeDateAnwenden(filter, header, i);
         }
-        else if (header.typ == FilterType.Text) {
+        else if (header.type == FilterType.Text) {
           this.filterTypeTextAnwenden(filter, i, header);
         }
-        else if (header.typ == FilterType.Number || header.typ == FilterType.Decimal) {
+        else if (header.type == FilterType.Number || header.type == FilterType.Decimal) {
           this.filterTypeNumberUndDecimalAnwenden(i, filter, header);
         }
-        else if (header.typ == FilterType.Object) {
+        else if (header.type == FilterType.Object) {
           this.filterTypeObjectAnwenden(filter, i, header);
         }
       }
@@ -161,19 +161,19 @@ export class TableComponent {
 
     // Sortierung anwenden
     this.tableDataFormatted.sort((a, b) => {
-      let valueA = a.row[columnIndex].wert;
-      let valueB = b.row[columnIndex].wert;
+      let valueA = a.row[columnIndex].value;
+      let valueB = b.row[columnIndex].value;
 
-      // Für jeden Filtertyp separat Sortierwerte festlegen
-      if (header.typ === FilterType.Date) {
+      // Für jeden Filtertyp separat Sortiervaluee festlegen
+      if (header.type === FilterType.Date) {
         valueA = this.parseDate(valueA).getTime();
         valueB = this.parseDate(valueB).getTime();
       }
-      else if (header.typ === FilterType.Text) {
+      else if (header.type === FilterType.Text) {
         valueA = valueA.toLowerCase();
         valueB = valueB.toLowerCase();
       }
-      else if (header.typ === FilterType.Number || header.typ === FilterType.Decimal) {
+      else if (header.type === FilterType.Number || header.type === FilterType.Decimal) {
         valueA = parseFloat(valueA);
         valueB = parseFloat(valueB);
       }
@@ -231,18 +231,18 @@ export class TableComponent {
         let data: any = {};
 
         // Formatierungen hinzufügen
-        if (this.tableHeader[i].typ == FilterType.Date) {
-          data.wert = this.formatDate(this.tableData[j][i]);
+        if (this.tableHeader[i].type == FilterType.Date) {
+          data.value = this.formatDate(this.tableData[j][i]);
         }
-        else if (this.tableHeader[i].typ == FilterType.Decimal) {
-          data.wert = parseFloat(this.tableData[j][i]).toFixed(2);
+        else if (this.tableHeader[i].type == FilterType.Decimal) {
+          data.value = parseFloat(this.tableData[j][i]).toFixed(2);
         }
-        else if (this.tableHeader[i].typ == FilterType.Text) {
-          data.wert = this.tableData[j][i];
+        else if (this.tableHeader[i].type == FilterType.Text) {
+          data.value = this.tableData[j][i];
           data.highlightedRange = { start: -1, end: -1 };
         }
         else { // keine Formatierung notwendig
-          data.wert = this.tableData[j][i];
+          data.value = this.tableData[j][i];
         }
 
         row.push(data);
@@ -257,11 +257,11 @@ export class TableComponent {
     for (let i = 0; i < this.tableHeader.length; i++) {
       let headerObject: any = {};
 
-      headerObject.wert = this.tableHeader[i].wert;
-      headerObject.typ = this.tableHeader[i].typ;
+      headerObject.value = this.tableHeader[i].value;
+      headerObject.type = this.tableHeader[i].type;
 
       for (let filterSorting of this.possibleFiltersAndSortings) {
-        if (filterSorting.FilterType == this.tableHeader[i].typ) {
+        if (filterSorting.FilterType == this.tableHeader[i].type) {
 
           // Sirtierungen hinzufügen
           let sortings = [];
@@ -281,7 +281,7 @@ export class TableComponent {
           for (let filter of filterSorting.Filters) {
             let filterObject: any = {};
             filterObject.name = filter.Name;
-            filterObject.typ = filter.Type;
+            filterObject.type = filter.Type;
             filterObject.filterUsed = false;
 
             // Spezielle Parameter für bestimmte Filter hinzufügen
@@ -374,13 +374,13 @@ export class TableComponent {
     filterObject.value2 = filterObject.max;
 
     if (filterObject.min == filterObject.max) {
-      filterObject.typ = "none";
+      filterObject.type = "none";
     }
   }
 
   private filterTypeObjectAnwenden(filter: any, i: number, header: any) {
     this.tableDataFormatted.forEach((line: any) => {
-      if (!(filter.Options.find((option: any) => option.selected && option.name == line.row[i].wert))) {
+      if (!(filter.Options.find((option: any) => option.selected && option.name == line.row[i].value))) {
         line.shown = false;
         header.filterUsed = true;
       }
@@ -389,7 +389,7 @@ export class TableComponent {
 
   private filterTypeNumberUndDecimalAnwenden(i: number, filter: any, header: any) {
     this.tableDataFormatted.forEach((line: any) => {
-      if (!(line.row[i].wert >= filter.value1 && line.row[i].wert <= filter.value2)) {
+      if (!(line.row[i].value >= filter.value1 && line.row[i].value <= filter.value2)) {
         line.shown = false;
         header.filterUsed = true;
       }
@@ -398,11 +398,11 @@ export class TableComponent {
 
   private filterTypeTextAnwenden(filter: any, i: number, header: any) {
     this.tableDataFormatted.forEach((line: any) => {
-      if (!filter.selected || !line.row[i].wert) {
+      if (!filter.selected || !line.row[i].value) {
         line.row[i].highlightedRange = { start: -1, end: -1 };
       }
-      else if (line.row[i].wert.toLowerCase().includes(filter.selected.toLowerCase())) {
-        line.row[i].highlightedRange = { start: line.row[i].wert.toLowerCase().indexOf(filter.selected.toLowerCase()), end: line.row[i].wert.toLowerCase().indexOf(filter.selected.toLowerCase()) + filter.selected.length };
+      else if (line.row[i].value.toLowerCase().includes(filter.selected.toLowerCase())) {
+        line.row[i].highlightedRange = { start: line.row[i].value.toLowerCase().indexOf(filter.selected.toLowerCase()), end: line.row[i].value.toLowerCase().indexOf(filter.selected.toLowerCase()) + filter.selected.length };
       }
       else {
         line.shown = false;
@@ -441,7 +441,7 @@ export class TableComponent {
   private filterToday(lineNumber: number): boolean {
     let used = false;
     this.tableDataFormatted.forEach((line: any) => {
-      if (line.row[lineNumber].wert != this.formatDate(new Date().toISOString())) {
+      if (line.row[lineNumber].value != this.formatDate(new Date().toISOString())) {
         line.shown = false;
         used = true;
       }
@@ -452,7 +452,7 @@ export class TableComponent {
   private filterYesterday(lineNumber: number): boolean {
     let used = false;
     this.tableDataFormatted.forEach((line: any) => {
-      if (line.row[lineNumber].wert != this.formatDate(new Date(new Date().setDate(new Date().getDate() - 1)).toISOString())) {
+      if (line.row[lineNumber].value != this.formatDate(new Date(new Date().setDate(new Date().getDate() - 1)).toISOString())) {
         line.shown = false;
         used = true;
       }
@@ -467,7 +467,7 @@ export class TableComponent {
 
     const currentWeek = this.getWeek(new Date());
     this.tableDataFormatted.forEach((line: any) => {
-      const date = this.parseDate(line.row[lineNumber].wert);
+      const date = this.parseDate(line.row[lineNumber].value);
       if (!(this.getWeek(date) === currentWeek && date.getFullYear() === currentYear && date.getMonth() === currentMonth)) {
         line.shown = false;
         used = true;
@@ -480,7 +480,7 @@ export class TableComponent {
     const currentYear = new Date().getFullYear();
     let used = false;
     this.tableDataFormatted.forEach((line: any) => {
-      const date = this.parseDate(line.row[lineNumber].wert);
+      const date = this.parseDate(line.row[lineNumber].value);
       if (!(date.getFullYear() === currentYear)) {
         line.shown = false;
         used = true;
@@ -495,7 +495,7 @@ export class TableComponent {
     let used = false;
 
     this.tableDataFormatted.forEach((line: any) => {
-      const date = this.parseDate(line.row[lineNumber].wert);
+      const date = this.parseDate(line.row[lineNumber].value);
       if (!(date.getFullYear() === currentYear && date.getMonth() === currentMonth)) {
         line.shown = false;
         used = true;

@@ -1,16 +1,17 @@
 <!-- Author: Viktoriia Vovchenko -->
 
-<!-- Dunklen Hintergrund anzeigen falls größe Ansicht geöffnet -->
+<!-- Display dark background if large view is opened -->
 <div *ngIf="wideOpen" class="background" (click)="wideOpen = false;"></div>
 
 <div id="container" [ngClass]="{'wide-open': wideOpen}" [ngStyle]="{'--border-color': themeColors[theme]['border-color'], '--text-color': themeColors[theme].text, '--main-background': themeColors[theme].background, '--table-header': themeColors[theme]['table-header'], '--second-background': themeColors[theme]['second-background']}">
 
-  <!-- Name und action-Butons anzeigen -->
+  <!-- Display name and action buttons -->
   <div id="top-elements-container">
     <p *ngIf="name != ''" class="name">{{ name }}</p>
     <div id="table-actions">
       <button *ngIf="removeChangesDisplayed()" (click)="removeChanges()">Remove Changes</button>
 
+      <!-- Icon open large view, not imported from assets because attr.stroke needs to be dynamically changed according to the theme -->
       <div *ngIf="!wideOpen" (click)="wideOpen = true;" class="img">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
           <path fill="none" d="M0 0h256v256H0z"></path>
@@ -19,6 +20,7 @@
         </svg>
       </div>
 
+      <!-- Icon close large view -->
       <div *ngIf="wideOpen" (click)="wideOpen = false;" class="img">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
           <path fill="none" d="M0 0h256v256H0z"></path>
@@ -30,22 +32,22 @@
     </div>
   </div>
 
-  <!-- Tabelle dynamisch generieren -->
+  <!-- Generate table dynamically -->
   <div id="table-container">
     <div *ngIf="tableDataFormatted.length > 0" id="table-content-container">
       <table #table>
 
-        <!-- Header mithilfe von Variable tableHeaderFormatted generieren -->
+        <!-- Generate header using the variable tableHeaderFormatted -->
         <thead>
           <tr>
             <th *ngFor="let data of tableHeaderFormatted" class="outline-top-bottom">
               <div class="header-content">
-                <div>{{ data.wert }}</div>
+                <div>{{ data.value }}</div>
                 <div #icon (click)="showFilterSortPopup(data, icon)" alt="icon" class="img">
 
                   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
                     <defs/>
-                    <!-- Base Icon - arrow down to show filter-sort popup -->
+                    <!-- Base Icon - arrow down to show filter/sort popup -->
                     <g [attr.fill]="themeColors[theme].text" class="fill-121313" transform="matrix(0.478275, 0, 0, 0.478275, 8.245858, 8.658251)">
                       <path d="M30 0H2a2 2 0 0 0-2 2v28a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 30H2V2h28v28z"/>
                       <path clip-rule="evenodd" d="M27 12.106c0-.564-.489-1.01-1.044-.995H6.013c-.887-.024-1.38 1.07-.742 1.702l9.999 9.9c.394.39 1.031.376 1.429 0l9.991-9.892a.988.988 0 0 0 .31-.715zm-11.016 8.485L8.418 13.1H23.55l-7.566 7.491z" fill-rule="evenodd"/>
@@ -67,22 +69,22 @@
           </tr>
         </thead>
 
-        <!-- Tabellenkontent mithilfe von Variable tableDataFormatted generieren -->
+        <!-- Generate table content using the variable tableDataFormatted -->
         <tbody>
           <ng-container *ngFor="let data of tableDataFormatted">
-            <tr *ngIf="data.shown"> <!-- Nicht anzeigen falls durch den Filter ausgebledet -->
+            <tr *ngIf="data.shown"> <!-- Do not display if filtered out -->
               <td *ngFor="let item of data.row">
                 <div *ngIf="item.highlightedRange && filterSortPopup != null">
-                  <!-- So eine Struktur mit span's wird für die Markierung bei der Anwendung vom Text-Filter benötigt -->
-                  <span class="table-text">{{ item.wert.substring(0, item.highlightedRange.start) }}</span>
+                  <!-- Such a structure with spans is needed for highlighting when applying the text filter -->
+                  <span class="table-text">{{ item.value.substring(0, item.highlightedRange.start) }}</span>
                   <span>
-                    <mark>{{ item.wert.substring(item.highlightedRange.start, item.highlightedRange.end)}}</mark>
+                    <mark>{{ item.value.substring(item.highlightedRange.start, item.highlightedRange.end)}}</mark>
                   </span>
-                  <span class="table-text">{{ item.wert.substring(item.highlightedRange.end, item.wert.length) }}</span>
+                  <span class="table-text">{{ item.value.substring(item.highlightedRange.end, item.value.length) }}</span>
                 </div>
-                <!-- Keine Markierung wegen Textfilter benötigt -->
+                <!-- No highlighting needed if no text filter applied -->
                 <div *ngIf="!item.highlightedRange || filterSortPopup == null" class="table-text">
-                  {{ item.wert }}
+                  {{ item.value }}
                 </div>
               </td>
             </tr>
@@ -92,17 +94,17 @@
       </table>
     </div>
 
-    <!-- Fehlermeldung anzeigen falls keine Daten vorhanden sind -->
+    <!-- Display error message if no data is available -->
     <div *ngIf="tableDataFormatted.length == 0" id="error-empty">
-      <p class="grey-text">{{errorEmpty}}</p>
+      <p>{{errorEmpty}}</p>
     </div>
   </div>
 </div>
 
-<!-- Popup für Filter und Sortierung -->
+<!-- Popup for filter and sorting -->
 <div #popup *ngIf="filterSortPopup != null" class="filter-sort-popup" [ngStyle]="popupPosition">
   <div class="popup-content" [ngStyle]="{backgroundColor: themeColors[theme]['popup-background-color'], borderColor: themeColors[theme]['border-color']}">
-    <!-- Sortierungen werden dynamisch aus getFilterSortPopupOptions().sortings generiert -->
+    <!-- Sorting options are dynamically generated from getFilterSortPopupOptions().sortings -->
     <div
       *ngFor="let sorting of getFilterSortPopupOptions().sortings"
       class="option"
@@ -110,26 +112,27 @@
       [ngClass]="{ selected: sorting.selected }"
       [ngStyle]="{backgroundColor: !sorting.selected ? themeColors[theme]['popup-button-color'] : themeColors[theme]['popup-selected-button-color'], borderColor: themeColors[theme]['border-color']}"
     >
+      <!-- Generate ArrowUp or ArrowDown according to settings -->
       <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" class="img">
         <path fill="none" d="M0 0h256v256H0z"></path>
         <path *ngIf="sorting.icon == 'ArrowUp'" fill="none" [attr.stroke]="themeColors[theme].text" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" d="M128 216V40M56 112l72-72 72 72" class="stroke-000000"></path>
         <path *ngIf="sorting.icon == 'ArrowDown'" fill="none" [attr.stroke]="themeColors[theme].text" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" d="M128 40v176M56 144l72 72 72-72" class="stroke-000000"></path>
       </svg>
 
-      <div [ngStyle]="{color: themeColors[theme].text}" class="grey-text">{{ sorting.name }}</div>
+      <div [ngStyle]="{color: themeColors[theme].text}">{{ sorting.name }}</div>
     </div>
 
-    <!-- Filter werden dynamisch aus getFilterSortPopupOptions().filters generiert -->
+    <!-- Filters are dynamically generated from getFilterSortPopupOptions().filters -->
     <div *ngFor="let filterOption of getFilterSortPopupOptions().filters">
 
-      <!-- Dropdown Filter, u. a. für das Datumfilter benutzt -->
-      <div *ngIf="filterOption.typ === 'Dropdown'" class="filter dropdown-filter">
+      <!-- Dropdown filter, used among others for the date filter -->
+      <div *ngIf="filterOption.type === 'Dropdown'" class="filter dropdown-filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
         <app-custom-dropdown [options]="filterOption.Options" [selectedOption]="selectedDropdownOption" (selectionChange)="filterOption.selected = $event; filterSelected()" [theme]="theme"></app-custom-dropdown>
       </div>
 
-      <!-- Text Filter, u. a. für Namen benutzt -->
-      <div *ngIf="filterOption.typ === 'Textfield'" class="filter">
+      <!-- Text filter, used among others for names -->
+      <div *ngIf="filterOption.type === 'Textfield'" class="filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
         <input class="textfield"
           type="text"
@@ -140,8 +143,8 @@
         />
       </div>
 
-      <!-- Reichweitenfilter, u. a. für Preise und Werte benutzt -->
-      <div *ngIf="filterOption.typ === 'Slider'" class="filter slider-filter">
+      <!-- Range filter, used among others for prices and values -->
+      <div *ngIf="filterOption.type === 'Slider'" class="filter slider-filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
         <app-range-slider
           [min]="filterOption.min"
@@ -155,18 +158,18 @@
         ></app-range-slider>
       </div>
 
-      <!-- Checkbox Filter, u. a. für Wertpapiertypen benutzt -->
-      <div *ngIf="filterOption.typ === 'Checkbox'" class="filter checkbox-filter">
+      <!-- Checkbox filter, used among others for car brands, countries -->
+      <div *ngIf="filterOption.type === 'Checkbox'" class="filter checkbox-filter">
         <label [ngStyle]="{color: themeColors[theme].text}">{{ filterOption.name }}</label>
         <div class="checkbox-container">
           <div *ngFor="let option of filterOption.Options" class="checkbox-option">
             <input
+              id="{{option.name}}"
               type="checkbox"
+              class="custom-checkbox"
               [checked]="option.selected"
               (change)="option.selected = !option.selected; filterSelected()"
-              class="custom-checkbox"
               [ngStyle]="{backgroundColor: themeColors[theme]['popup-background-color'], borderColor: themeColors[theme].text, color: themeColors[theme].text}"
-              id="{{option.name}}"
             />
             <label [ngStyle]="{color: themeColors[theme].text}" for="{{option.name}}">{{ option.name }}</label>
           </div>
