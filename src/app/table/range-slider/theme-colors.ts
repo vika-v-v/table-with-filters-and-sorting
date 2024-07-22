@@ -1,7 +1,7 @@
 export const themeColors = {
   "light" : {
     "border-color": "#aeaeae",
-    "selected-area": "#a5a5a5",
+    "selected-area": "#868686",
     "non-selected-area": "#e1e1e1",
     "text" : "#1c1c1c",
     "handle": "#f4f4f4"

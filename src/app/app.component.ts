@@ -13,5 +13,5 @@ import { DemoComponent } from './demo/demo.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'table-with-filter-and-sort';
+  title = 'Table with Filter and Sort';
 }

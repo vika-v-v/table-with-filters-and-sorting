@@ -88,3 +88,8 @@
   top: auto;
   bottom: 120%;
 }
+
+/* in case the element is used separately from the table, it imports the font once again */
+* {
+  font-family: 'Gully', Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -90,3 +90,8 @@ input[type="range"]::-moz-range-thumb {
   border: 1px solid var(--border-color);
   z-index: 100;
 }
+
+/* in case the element is used separately from the table, it imports the font once again */
+* {
+  font-family: 'Gully', Verdana, Geneva, Tahoma, sans-serif;
+}

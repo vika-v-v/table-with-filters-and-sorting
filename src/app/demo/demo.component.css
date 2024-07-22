@@ -1,3 +1,10 @@
+h1 {
+  font-family: 'Glacial Indifference Bold', Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: 55px;
+  letter-spacing: 5px;
+}
+
 #container {
   display: flex;
   flex-direction: column;
@@ -22,7 +29,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  background: linear-gradient(to right, rgb(95, 95, 95) 50%, rgb(229, 229, 229) 50%);
+  background: linear-gradient(to right, black 50%, white 50%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

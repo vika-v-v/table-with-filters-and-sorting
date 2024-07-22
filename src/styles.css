@@ -8,17 +8,6 @@
   src: url('assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
 }
 
-* {
-  font-family: 'Gully', Verdana, Geneva, Tahoma, sans-serif;
-}
-
-h1 {
-  font-family: 'Glacial Indifference Bold', Verdana, Geneva, Tahoma, sans-serif;
-  text-transform: uppercase;
-  font-size: 55px;
-  letter-spacing: 5px;
-}
-
 body {
   width: 100%;
   height: 100vh;

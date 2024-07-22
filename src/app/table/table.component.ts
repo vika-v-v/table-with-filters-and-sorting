@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Inject, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RangeSliderComponent } from '../range-slider/range-slider.component';
+import { RangeSliderComponent } from './range-slider/range-slider.component';
 import { tableConfig } from './table-config.const';
-import { CustomDropdownComponent } from '../custom-dropdown/custom-dropdown.component';
+import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
 import { FilterType } from './filter-type.enum';
 import { themeColors } from './theme-colors';
-import { ArrowFunctionExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-table',
