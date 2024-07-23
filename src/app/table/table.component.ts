@@ -353,7 +353,7 @@ export class TableComponent {
   }
 
   // ------------------------
-  // Futher helper methods
+  // Further helper methods
   // ------------------------
 
   private initCheckboxParameters(i: number, filterObject: any) {
