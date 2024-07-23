@@ -17,8 +17,8 @@ h1 {
 
 #header {
   font-size: calc(4vw + 1vmin);
-  max-height: 25vh;
-  min-height: 25vh;
+  max-height: 23vh;
+  min-height: 23vh;
   vertical-align: middle;
   top: 0;
   position: absolute;
@@ -72,6 +72,6 @@ h1 {
   flex-direction: column;
   justify-content: start;
   width: 100%;
-  height: calc(75vh - 120px);
-  margin-top: calc(25vh + 10px);
+  height: calc(77vh - 120px);
+  margin-top: calc(23vh + 10px);
 }

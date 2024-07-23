@@ -3,7 +3,6 @@ export enum FilterType {
   Decimal,
   Text,
   Date,
-  Boolean,
   Object,
   None
 }
