@@ -1,4 +1,4 @@
-# Table with filters and sorting on angular
+# Table with filters and sorting on Angular
 This repository contains a ready-to-use table with filters and sorting from the <a href="https://github.com/vika-v-v/trading-app-frontend">trading app project</a> written in Angular. There is a demo showing the light and dark themes of the table with some example data.
 
 <img src="src\assets\preview\demo_normal.png" alt="Demo">
