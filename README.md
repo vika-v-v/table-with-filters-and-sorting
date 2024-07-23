@@ -1,4 +1,4 @@
-#Table with filters and sorting on angular
+# Table with filters and sorting on angular
 This repository contains a ready-to-use table with filters and sorting from the <a href="https://github.com/vika-v-v/trading-app-frontend">trading app project</a> written in Angular. There is a demo showing the light and dark themes of the table with some example data.
 
 <img src="src\assets\preview\demo_normal.png" alt="Demo">
@@ -7,7 +7,7 @@ This repository contains a ready-to-use table with filters and sorting from the 
 Demo:
 <a href="https://youtu.be/9qGOSBP4Bjg?si=8xCyDKF8YdxDaW4W?autoplay=1"><img src="src\assets\preview\demo_video.png" alt="Demo"></a>
 
-#Get Started
+# Get Started
 Prerequisites: Node.js and Angular must be installed.
 <ol>
 <li>Clone this project.</li>
@@ -32,14 +32,7 @@ The table takes the following data as parameters:
 
 <ul>
   <li>
-    <code>tableHeader</code> - in the format 
-    <code>
-      [
-        { "value": "Name of the Column", "type": Type_Of_The_Data_In_The_Column },
-        { ... },
-        ...
-      ];
-    </code> 
+    <code>tableHeader</code> - in the format <code>[{ "value": "Name of the Column", "type": Type_Of_The_Data_In_The_Column }, { ... }, ... ];</code> 
     The types are listed in <a href="src\app\table\filter-type.enum.ts">filter-type.enum</a> and can be:
     <ul>
       <li><code>Number</code> - Slider as a filter is shown</li>
