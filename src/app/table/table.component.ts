@@ -22,32 +22,32 @@ import { themeColors } from './theme-colors';
 export class TableComponent {
   FilterType = FilterType;
 
-  // Hier werden die Daten für die Tabelle übergeben
+  // Here the data for the table is passed
   @Input() tableHeader: any[] = [];
   @Input() tableData: any[] = [];
   @Input() name: string = '';
   @Input() errorEmpty: string = 'Not yet available.';
   @Input() theme: 'light' | 'dark' = 'light';
 
-  // Formatierte Eingabedaten, die u. a. angeben, ob eine Zeile angezeigt werden soll
+  // Formatted input data, which specify, among other things, whether a row should be displayed
   tableDataFormatted: any[] = [];
   tableHeaderFormatted: any[] = [];
-  initialTableDataFormatted: any[] = [];
+  private initialTableDataFormatted: any[] = [];
 
-  // Informationen zu dem, welche Sortierungen und Filter ausgewählt sind
+  // Information about which sorts and filters are selected
   filterSortPopup: any | null = null;
 
   popupPosition: any = {};
-  currentIcon: HTMLElement | null = null; // wo filter zum letzten mal geöffnet wurde
+  private currentIcon: HTMLElement | null = null; // where filter was last opened
 
-  initialized = false;
+  private initialized = false;
 
   selectedDropdownOption: string = '';
 
-  // größen Ansicht öffnen
+  // open wide view
   wideOpen: boolean = false;
 
-  // Elemente, auf die aus der HTML-Schicht zugegriffen werden muss
+  // Elements that need to be accessed from the HTML layer
   @ViewChild('popup') popupRef!: ElementRef;
   @ViewChild('table') table!: ElementRef;
 
@@ -60,7 +60,7 @@ export class TableComponent {
     this.initialized = true;
   }
 
-  // Falls sich die Eingabedaten ändern, wird die Tabelle neu generiert
+  // If the input data changes, the table will be regenerated
   ngOnChanges(changes: SimpleChanges) {
     if (this.initialized && changes['tableData']) {
       this.tableDataFormatted = [];
@@ -71,7 +71,7 @@ export class TableComponent {
     }
   }
 
-  // tableDataFormatted und tableHeaderFormatted initialisieren
+  // Initialize tableDataFormatted and tableHeaderFormatted
   initializeData(): void {
 
     this.initHeaderData();
@@ -90,23 +90,23 @@ export class TableComponent {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
 
-    // Position rechts vom Icon
+    // Position to the right of the icon
     let popupLeft = rect.left + scrollLeft;
     let popupTop = rect.bottom + 5 + scrollTop;
 
-    // Warten bis Element gesitioniert ist, um overflow zu prüfen
+    // Wait until the element is positioned to check for overflow
     requestAnimationFrame(() => {
       const popupWidth = this.popupRef.nativeElement.offsetWidth;
       const popupHeight = this.popupRef.nativeElement.offsetHeight;
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
 
-      // Vertikale Position anpassen, wenn das Popup den Bildschirmrand überschreiten würde
+      // Adjust vertical position if the popup would exceed the edge of the screen
       if (popupLeft + popupWidth > screenWidth) {
         popupLeft = rect.right - popupWidth + scrollLeft;
       }
 
-      // Horizontale Position anpassen, wenn das Popup den Bildschirmrand überschreiten würde
+      // Adjust horizontal position if the popup would exceed the edge of the screen
       if (popupTop + popupHeight > screenHeight) {
         popupTop = rect.top - popupHeight + scrollTop;
       }
@@ -116,15 +116,14 @@ export class TableComponent {
   }, 1);
   }
 
-
-  // Filter beim auswählen anwenden
+  // Apply filter upon selection
   filterSelected() {
-    // Filter zurücksetzen
+    // Reset filter
     this.tableDataFormatted.forEach((line: any) => {
       line.shown = true;
     });
 
-    // Jeden Filter durchgehen und anwenden
+    // Iterate through and apply each filter
     for (let i = 0; i < this.tableHeaderFormatted.length; i++) {
       let header = this.tableHeaderFormatted[i];
       header.filterUsed = false;
@@ -132,7 +131,7 @@ export class TableComponent {
       for (let j = 0; j < header.filters.length; j++) {
         let filter = header.filters[j];
 
-        // Entsprehene Methode für den Filter-Type aufrufen
+        // Call the corresponding method for the filter type
         if (header.type == FilterType.Date) {
           this.filterTypeDateAnwenden(filter, header, i);
         }
@@ -149,22 +148,22 @@ export class TableComponent {
     }
   }
 
-  // Sortierung beim auswählen anwenden
+  // Apply sorting upon selection
   private sortingSelected(sorting: any, header: any) {
 
-    // Eingabedaten prüfen
+    // Validate input data
 
     if (!sorting.selected) return;
 
     const columnIndex = this.tableHeaderFormatted.findIndex(h => h === header);
     if (columnIndex < 0) return;
 
-    // Sortierung anwenden
+    // Apply sorting
     this.tableDataFormatted.sort((a, b) => {
       let valueA = a.row[columnIndex].value;
       let valueB = b.row[columnIndex].value;
 
-      // Für jeden Filtertyp separat Sortiervaluee festlegen
+      // Set sorting value separately for each filter type
       if (header.type === FilterType.Date) {
         valueA = this.parseDate(valueA).getTime();
         valueB = this.parseDate(valueB).getTime();
@@ -178,7 +177,7 @@ export class TableComponent {
         valueB = parseFloat(valueB);
       }
 
-      // Sortierung anwenden
+      // Apply sorting
       if (sorting.key === 'asc') {
         return valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
       } else {
@@ -187,9 +186,9 @@ export class TableComponent {
     });
   }
 
-  // Sortierung umschalten, für die HTML-Element notwendig
+  // Toggle sorting, which requires the HTML element
   toggleSorting(sorting: any, header: any) {
-    // Sortieung selektieren: alle Sortierungen zurücksetzen und die ausgewählte Sortierung selektieren
+    // Select sorting: reset all sortings and select the chosen sorting
     if (!sorting.selected) {
       this.tableHeaderFormatted.forEach((h: any) => {
         if (h.sortings != undefined) {
@@ -201,14 +200,14 @@ export class TableComponent {
       sorting.selected = true;
       this.sortingSelected(sorting, header);
     }
-    // Sortierung deselektieren: alle Sortierungen zurücksetzen
+    // Deselect sorting: reset all sortings
     else {
       sorting.selected = false;
       this.tableDataFormatted = [...this.initialTableDataFormatted];
     }
   }
 
-  // Beim Klicken außerhalb des Popups wird das Popup schließen
+  // When clicking outside the popup, the popup will close
   @HostListener('document:click', ['$event'])
   handleClick(event: Event) {
     const targetElement = event.target as HTMLElement;
@@ -223,14 +222,14 @@ export class TableComponent {
     }
   }
 
-  // über alle Informationen im Tabellenkontent durchegehen und je nach dem Type benötigte Formatierungen hinzufügen
+  // Iterate through all information in the table content and add necessary formatting according to the type
   private initTableData() {
     for (let j = 0; j < this.tableData.length; j++) {
       let row = [];
       for (let i = 0; i < this.tableHeader.length; i++) {
         let data: any = {};
 
-        // Formatierungen hinzufügen
+        // Add formatting
         if (this.tableHeader[i].type == FilterType.Date) {
           data.value = this.formatDate(this.tableData[j][i]);
         }
@@ -241,18 +240,18 @@ export class TableComponent {
           data.value = this.tableData[j][i];
           data.highlightedRange = { start: -1, end: -1 };
         }
-        else { // keine Formatierung notwendig
+        else { // No formatting needed
           data.value = this.tableData[j][i];
         }
 
         row.push(data);
       }
-      // am Anfang alle Zeilen anzeigen
+      // Initially display all rows
       this.tableDataFormatted.push({ row, "shown": true });
     }
   }
 
-  // über alle Informationen im Header durchegehen und ersprechend Filter und Sortierungen dazu hinzufügen
+  // Iterate through all information in the header and add corresponding filters and sortings
   private initHeaderData() {
     for (let i = 0; i < this.tableHeader.length; i++) {
       let headerObject: any = {};
@@ -263,7 +262,7 @@ export class TableComponent {
       for (let filterSorting of this.possibleFiltersAndSortings) {
         if (filterSorting.FilterType == this.tableHeader[i].type) {
 
-          // Sirtierungen hinzufügen
+          // Add sortings
           let sortings = [];
           for (let sorting of filterSorting.Sortings) {
             let sortingObject: any = {};
@@ -276,7 +275,7 @@ export class TableComponent {
           }
           headerObject.sortings = sortings;
 
-          // Filter hinzufügen
+          // Add filters
           let filters = [];
           for (let filter of filterSorting.Filters) {
             let filterObject: any = {};
@@ -284,7 +283,7 @@ export class TableComponent {
             filterObject.type = filter.Type;
             filterObject.filterUsed = false;
 
-            // Spezielle Parameter für bestimmte Filter hinzufügen
+            // Add specific parameters for certain filters
             if ('Options' in filter) filterObject.Options = filter.Options;
             if ('DefaultSelected' in filter) filterObject.selected = filter.DefaultSelected;
 
@@ -300,12 +299,12 @@ export class TableComponent {
     }
   }
 
-  // image je nach dem ob Filter und/oder Sortierung angezeigt ist anpassen
+  // Adjust the image depending on whether filter and/or sorting is displayed
   getArrowSrc(header: any): "arrow" | "arrowWithPoint" | "arrowWithSort" | "arrowWithPointAndSort" {
     let filterUsed = false;
     let sortingUsed = false;
 
-    // prüfen, welche Filter und Sortierungen ausgewählt sind
+    // Check which filters and sortings are selected
     if (header.filterUsed) filterUsed = true;
 
     for(let sorting of header.sortings) {
@@ -319,8 +318,8 @@ export class TableComponent {
     return "arrow";
   }
 
-  // gibt an, ob irgendwelche Filter oder Sortierungen angewendet sind um das Button "Änderungen löschen" anzuzeigen
-  removeChangesDisplayed(): boolean {
+  // Indicates whether any filters or sortings are applied to display the "Clear Changes" button
+  clearChangesDisplayed(): boolean {
     let angezeigt = false;
 
     this.tableHeaderFormatted.forEach((h: any) => {
@@ -335,15 +334,15 @@ export class TableComponent {
     return angezeigt;
   }
 
-  // für das Button "Änderungen löschen" benötigt
-  removeChanges() {
+  // Needed for the "Clear Changes" button
+  clearChanges() {
     this.tableDataFormatted = [];
     this.tableHeaderFormatted = [];
     this.initialTableDataFormatted = [];
     this.initializeData();
   }
 
-   // für die dynamische generierung des Popups in HTML benötigt
+   // Needed for the dynamic generation of the popup in HTML
    getFilterSortPopupOptions(): any {
     for (let filterSorting of this.tableHeaderFormatted) {
       if (filterSorting == this.filterSortPopup) {
@@ -354,7 +353,7 @@ export class TableComponent {
   }
 
   // ------------------------
-  // weitere Hilfsmethoden
+  // Futher helper methods
   // ------------------------
 
   private initCheckboxParameters(i: number, filterObject: any) {

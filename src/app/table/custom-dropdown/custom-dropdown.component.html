@@ -1,6 +1,6 @@
 <div class="dropdown-container" (clickOutside)="dropdownOpen = false" [ngStyle]="{backgroundColor: themeColors[theme]['default-color']}">
 
-  <!-- Die Ausgewählte Option -->
+  <!-- The selected option -->
   <div class="selected-option" (click)="toggleDropdown()" #dropdown [ngStyle]="{color: themeColors[theme].text}">
     <p>{{ selectedOption }}</p>
     <svg class="dropdown-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +9,7 @@
     </svg>
   </div>
 
-  <!-- Alle Options -->
+  <!-- All options -->
   <div class="options-container" *ngIf="dropdownOpen" #optionsContainer [ngClass]="{'upwards': upwards}" [ngStyle]="{backgroundColor: themeColors[theme]['options-container-color'], color: themeColors[theme].text}">
     <div *ngFor="let option of options" (click)="selectOption(option)" class="option" [ngStyle]="{'--option-after-gradient': 'linear-gradient(to right, ' + themeColors[theme].text + '00, ' + themeColors[theme].text + ', ' + themeColors[theme].text + '00)', '--hover-color': themeColors[theme]['hovered-color']}">
       <p class="option-text">{{ option }}</p>

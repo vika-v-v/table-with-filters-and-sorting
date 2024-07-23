@@ -14,7 +14,7 @@ import { themeColors } from './theme-colors';
   styleUrl: './range-slider.component.css'
 })
 export class RangeSliderComponent {
-  // Am Anfrang Werte für die Range-Slider eingeben
+  // Enter values for the range sliders at the beginning
   @Input() min!: number;
   @Input() max!: number;
   @Input() step!: number;
@@ -22,11 +22,11 @@ export class RangeSliderComponent {
   @Input() value2!: number;
   @Input() theme: 'light' | 'dark' = 'light';
 
-  // Andere Komponenten notifizieren, wenn sich die Werte ändern
+  // Notify other components when the values change
   @Output() value1Change = new EventEmitter<number>();
   @Output() value2Change = new EventEmitter<number>();
 
-  // Für die Darstellung des Tracks benötigt
+  // Needed for displaying the track
   trackLeft: string = '';
   trackWidth: string = '';
 
@@ -36,7 +36,7 @@ export class RangeSliderComponent {
     this.updateTrackStyles();
   }
 
-  // Werte runden und über Änderungen notifizieren
+  // Round values and notify about changes
   onValue2Change() {
     this.value2 = parseFloat(this.value2.toFixed(2));
     this.value2Change.emit(this.value2);
@@ -49,7 +49,7 @@ export class RangeSliderComponent {
     this.onValueChange();
   }
 
-  // Werte tauschen, falls value1 > value2
+  // Swap values if value1 > value2
   onValueChange() {
     if (this.value1 > this.value2) {
       [this.value1, this.value2] = [this.value2, this.value1];

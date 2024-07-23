@@ -1,6 +1,6 @@
 <div class="container" [ngStyle]="{'--border-color': themeColors[theme]['border-color'], '--selected-area': themeColors[theme]['selected-area'], '--non-selected-area': themeColors[theme]['non-selected-area'], '--handle': themeColors[theme]['handle'], '--text-color': themeColors[theme].text}">
 
-  <!-- Slider generieren -->
+  <!-- Generate slider -->
   <div class="range-slider">
     <input type="range" [min]="min" [max]="max" [step]="step" [(ngModel)]="value1" (input)="onValue1Change()" />
     <input type="range" [min]="min" [max]="max" [step]="step" [(ngModel)]="value2" (input)="onValue2Change()" />
@@ -8,7 +8,7 @@
     <div class="background-track"></div>
   </div>
 
-  <!-- Anzeige von aktuellen Werten-->
+  <!-- Display current values -->
   <div class="values">
     <div class="text">{{ min }}</div>
     <div class="text">{{ value1 }} - {{ value2 }}</div>

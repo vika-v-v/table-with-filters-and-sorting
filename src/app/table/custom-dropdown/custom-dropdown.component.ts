@@ -14,17 +14,17 @@ import { themeColors } from './theme-colors';
 export class CustomDropdownComponent {
   @Input() options: string[] = [];
 
-  // Angezeigte Option wird sich nicht ändern - hilfreich für Aktionesdropdowns wie Transaktionsauswahl
+  // Displayed option will not change - useful for action dropdowns like menu selection with fixed name
   @Input() alwaysSelectOption: string | null = null;
 
   @Input() selectedOption: string | null = null;
   @Input() theme: 'light' | 'dark' = 'light';
 
-  @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>(); // Notifiziert über Änderungen der Auswahl
+  @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>(); // Notifies about selection changes
 
   dropdownOpen: boolean = false;
 
-  // Options können etweder oben oder unten angezeigt werden, diese Variable bestimmt die Richtung
+  // Options can be displayed either above or below; this variable determines the direction
   upwards: boolean = false;
 
   @ViewChild('dropdown') dropdown!: ElementRef;
@@ -42,7 +42,7 @@ export class CustomDropdownComponent {
     this.setPosition();
   }
 
-  // Hier wird selectedOption anhand von Input-Parametern initialisiert
+  // Here, selectedOption is initialized based on input parameters
   private initializeDropdown() {
     if (this.alwaysSelectOption != null) {
       this.selectedOption = this.alwaysSelectOption;
@@ -59,7 +59,7 @@ export class CustomDropdownComponent {
     }
   }
 
-  // Ausgewählte Option wird ändern
+  // Selected option should change
   selectOption(option: string): void {
     if (this.alwaysSelectOption == null) {
       this.selectedOption = option;
@@ -72,7 +72,7 @@ export class CustomDropdownComponent {
     this.dropdownOpen = false;
   }
 
-  // Bestimmt ob Dropdown nach oben oder unten geöffnet wird
+  // Determines whether the dropdown opens upwards or downwards
   private setPosition(): void {
     const dropdownRect = this.dropdown.nativeElement.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
@@ -90,7 +90,7 @@ export class CustomDropdownComponent {
     this.cdr.detectChanges();
   }
 
-  // Dropdown ausklappen, wenn außerhalb des Dropdowns geklickt wird
+  // Collapse dropdown when clicking outside the dropdown
   @HostListener('document:click', ['$event'])
   handleClick(event: Event) {
     const targetElement = event.target as HTMLElement;
@@ -102,7 +102,7 @@ export class CustomDropdownComponent {
     }
   }
 
-  // Dropdown-Position aktualisieren, wenn Fenstergröße geändert wird
+  // Update dropdown position when window size changes
   @HostListener('window:resize')
   onResize(): void {
     if (this.dropdownOpen) {

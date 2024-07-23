@@ -9,7 +9,7 @@
   <div id="top-elements-container">
     <p *ngIf="name != ''" class="name">{{ name }}</p>
     <div id="table-actions">
-      <button *ngIf="removeChangesDisplayed()" (click)="removeChanges()">Remove Changes</button>
+      <button *ngIf="clearChangesDisplayed()" (click)="clearChanges()">Clear Changes</button>
 
       <!-- Icon open large view, not imported from assets because attr.stroke needs to be dynamically changed according to the theme -->
       <div *ngIf="!wideOpen" (click)="wideOpen = true;" class="img">

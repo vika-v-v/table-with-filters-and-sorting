@@ -40,7 +40,7 @@
 }
 
 
-/* Die vorgenegene input-Regeln in unterschiedlichen Browser überschreiben */
+/* Override the specified input rules in different browsers */
 
 input[type="range"] {
   position: absolute;
