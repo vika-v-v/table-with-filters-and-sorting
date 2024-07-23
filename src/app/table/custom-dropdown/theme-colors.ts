@@ -12,5 +12,12 @@ export const themeColors = {
     "hovered-color" : "#848484",
     "border-color": "#606060",
     "text" : "#eef0ef"
+  },
+  "red" : {
+    "default-color" : "#ff3333",
+    "options-container-color" : "#ff3333",
+    "hovered-color" : "#ff6666",
+    "border-color": "#ff3333",
+    "text" : "#660000"
   }
 };

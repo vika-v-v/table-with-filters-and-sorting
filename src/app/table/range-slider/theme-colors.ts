@@ -12,5 +12,12 @@ export const themeColors = {
     "non-selected-area": "#515151",
     "text" : "#eef0ef",
     "handle": "#b8b8b8"
+  },
+  "red" : {
+    "border-color": "#ff3333",
+    "selected-area": "#ff6666",
+    "non-selected-area": "#ffcccc",
+    "text" : "#660000",
+    "handle": "#ff9999"
   }
 };

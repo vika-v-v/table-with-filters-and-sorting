@@ -27,7 +27,7 @@ export class TableComponent {
   @Input() tableData: any[] = [];
   @Input() name: string = '';
   @Input() errorEmpty: string = 'Not yet available.';
-  @Input() theme: 'light' | 'dark' = 'light';
+  @Input() theme: 'light' | 'dark' | 'red' = 'light';
 
   // Formatted input data, which specify, among other things, whether a row should be displayed
   tableDataFormatted: any[] = [];

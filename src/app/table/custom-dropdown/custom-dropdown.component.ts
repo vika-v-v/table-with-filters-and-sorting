@@ -18,7 +18,7 @@ export class CustomDropdownComponent {
   @Input() alwaysSelectOption: string | null = null;
 
   @Input() selectedOption: string | null = null;
-  @Input() theme: 'light' | 'dark' = 'light';
+  @Input() theme: 'light' | 'dark' | 'red' = 'light';
 
   @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>(); // Notifies about selection changes
 

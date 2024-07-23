@@ -20,7 +20,7 @@ export class RangeSliderComponent {
   @Input() step!: number;
   @Input() value1!: number;
   @Input() value2!: number;
-  @Input() theme: 'light' | 'dark' = 'light';
+  @Input() theme: 'light' | 'dark' | 'red' = 'light';
 
   // Notify other components when the values change
   @Output() value1Change = new EventEmitter<number>();

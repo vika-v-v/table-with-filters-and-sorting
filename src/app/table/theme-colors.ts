@@ -18,5 +18,15 @@ export const themeColors = {
     "popup-background-color" : "#323232",
     "popup-button-color" : "#464646",
     "popup-selected-button-color" : "#6c6c6c"
+  },
+  "red" : {
+    "background" : "#ffcccc",
+    "second-background" : "#ffe6e6",
+    "table-header" : "#ff9999",
+    "border-color": "#ff3333",
+    "text" : "#660000",
+    "popup-background-color" : "#ffcccc",
+    "popup-button-color" : "#ff9999",
+    "popup-selected-button-color" : "#ff3333"
   }
 };
