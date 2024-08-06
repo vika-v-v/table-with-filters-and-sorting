@@ -2,7 +2,6 @@
 This repository contains a ready-to-use table with filters and sorting from the <a href="https://github.com/vika-v-v/trading-app-frontend">trading app project</a> written in Angular. There is a demo showing the light and dark themes of the table with some example data.
 
 <img src="src\assets\preview\demo_normal.png" alt="Demo">
-<img src="src\assets\preview\demo_filter_shown.png" alt="Demo">
 
 Demo:
 <a href="https://youtu.be/9qGOSBP4Bjg?si=8xCyDKF8YdxDaW4W?autoplay=1"><img src="src\assets\preview\demo_video.png" alt="Demo"></a>
